@@ -63,15 +63,15 @@
 		height = canvas.height;
         stage = new createjs.Stage(canvas);
 		
-		map = new createjs.Bitmap("../images/background.png");
+		map = new createjs.Bitmap("/images/background.png");
 		
 		fpsLabel = new createjs.Text("-- fps","bold 14px Arial","#000");
 		fpsLabel.x = 10;
 		fpsLabel.y = 10;
 		
 		//Test avec une animation
-		perso.src = "../images/perso.png";
-		bombe.src = "../images/bomb.png";
+		perso.src = "/images/perso.png";
+		bombe.src = "/images/bomb.png";
 		
 		Hero = new Perso(perso);
 
@@ -122,7 +122,6 @@
 	}
 	
 	function SupprimerBombe(index){
-		alert(index);
 		tab_bombes.splice(index,1);
 		nbr_bombes --;
 	}
