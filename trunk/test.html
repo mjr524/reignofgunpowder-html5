@@ -124,6 +124,9 @@
 	function SupprimerBombe(index){
 		tab_bombes.splice(index,1);
 		nbr_bombes --;
+		for(var i = index; i<= tab_bombes.length-1; i++){
+			tab_bombes[i].index --;
+		}
 	}
 	  
 	</script>
