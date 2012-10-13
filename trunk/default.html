@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <title>ReingOfGamepowder</title>
+
+    <!-- Références WinJS -->
+    <!--    <link href="//Microsoft.WinJS.1.0/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.1.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.1.0/js/ui.js"></script>-->
+
+    <!-- Références ReingOfGamepowder -->
+    <!--    <link href="/css/default.css" rel="stylesheet" />
+    <script src="/js/default.js"></script>-->
+    <!-- Librairie EASEL.JS -->
+    <!--<link href="assets/demoStyles.css" rel="stylesheet" type="text/css" />-->
+    <script type="text/javascript" src="src/Utils/Prototype.js"></script>
+    <script type="text/javascript" src="src/Utils/Singleton.js"></script>
+    <script type="text/javascript" src="easeljs/utils/UID.js"></script>
+    <script type="text/javascript" src="easeljs/geom/Matrix2D.js"></script>
+    <script type="text/javascript" src="easeljs/display/DisplayObject.js"></script>
+    <script type="text/javascript" src="easeljs/display/Container.js"></script>
+    <script type="text/javascript" src="easeljs/display/Shadow.js"></script>
+    <script type="text/javascript" src="easeljs/display/SpriteSheet.js"></script>
+    <script type="text/javascript" src="easeljs/display/Stage.js"></script>
+    <script type="text/javascript" src="easeljs/events/MouseEvent.js"></script>
+    <script type="text/javascript" src="easeljs/display/Shape.js"></script>
+    <script type="text/javascript" src="easeljs/display/Graphics.js"></script>
+    <script type="text/javascript" src="easeljs/utils/Ticker.js"></script>
+    <script type="text/javascript" src="easeljs/display/Bitmap.js"></script>
+    <script type="text/javascript" src="easeljs/display/Text.js"></script>
+    <script type="text/javascript" src="easeljs/geom/Rectangle.js"></script>
+    <script type="text/javascript" src="easeljs/geom/Point.js"></script>
+    <script type="text/javascript" src="easeljs/utils/SpriteSheetUtils.js"></script>
+    <script type="text/javascript" src="easeljs/display/BitmapAnimation.js"></script>
+
+    <!-- Nos Librairies -->
+    <!-- Utils -->
+    <!-- BO -->
+    <script src="src/BO/Bombe.js"></script>
+    <script src="src/BO/Perso.js"></script>
+    <!-- BLL -->
+    <script src="src/BLL/LesBombes.js"></script>
+    <script src="src/BLL/LesPersos.js"></script>
+
+    <!-- We also provide hosted minified versions of all CreateJS libraries.
+	  http://code.createjs.com -->
+
+    <script type="text/javascript">
+        var canvas;
+        var stage;
+        var fpsLabel;
+        var map;
+
+        //Les différents tableaux
+        var tab_bombes = [];
+
+        //Compteurs
+        var nbr_bombes = 0;
+
+        var perso = new Image();
+        var bombe = new Image();
+        var Hero = null;
+        var Bebom = null;
+
+        var KEYCODE_SPACE = 32;		//usefull keycode
+        var KEYCODE_DOWN = 40;
+        var KEYCODE_UP = 38;		//usefull keycode
+        var KEYCODE_LEFT = 37;		//usefull keycode
+        var KEYCODE_RIGHT = 39;		//usefull keycode
+
+        //register key functions
+        document.onkeydown = handleKeyDown;
+        document.onkeyup = handleKeyUp;
+
+        function init() {
+            canvas = document.getElementById('myCanvas');
+            width = canvas.width;
+            height = canvas.height;
+            stage = new createjs.Stage(canvas);
+
+            map = new createjs.Bitmap("images/background.jpg");
+
+            fpsLabel = new createjs.Text("-- fps", "bold 14px Arial", "#000");
+            fpsLabel.x = 10;
+            fpsLabel.y = 10;
+
+            //Test avec une animation
+            perso.src = "images/perso.png";
+            bombe.src = "images/bomb.png";
+
+            Hero = new Perso(perso);
+
+            // On lance la séquence d’animation
+
+            stage.addChild(map);
+            stage.addChild(fpsLabel);
+            stage.addChild(Hero);
+            stage.update();
+
+            createjs.Ticker.setInterval(17);
+            createjs.Ticker.addListener(window);
+            createjs.Ticker.useRAF = true;
+            createjs.Ticker.setFPS(100);
+        }
+
+        function tick() {
+            fpsLabel.text = Math.round(createjs.Ticker.getMeasuredFPS()) + " fps";
+            Hero.tick();
+            for (var i = 0; i < tab_bombes.length; i++) {
+                tab_bombes[i].tick();
+            }
+            stage.update();
+        }
+
+        function handleKeyDown(e) {
+            //cross browser issues exist
+            if (!e) { var e = window.event; }
+            switch (e.keyCode) {
+                case KEYCODE_LEFT: Hero.Deplacer(4); break;
+                case KEYCODE_RIGHT: Hero.Deplacer(2); break;
+                case KEYCODE_UP: Hero.Deplacer(1); break;
+                case KEYCODE_DOWN: Hero.Deplacer(3); break;
+                case KEYCODE_SPACE: Hero.PoserBombe(); break;
+            }
+        }
+
+        function handleKeyUp(e) {
+            //cross browser issues exist
+            /*if(!e){ var e = window.event; }
+            switch(e.keycode) {
+                case keycode_left:	hero.stop(); break;
+                case keycode_right: if(hero.x == nextx)adroite = true; break;
+                case keycode_up:	if(hero.y == nexty)enhaut = true; break;
+                case keycode_down:	if(hero.y == nexty)enbas = true; break;
+            }*/
+        }
+
+        function SupprimerBombe(index) {
+            tab_bombes.splice(index, 1);
+            nbr_bombes--;
+            for (var i = index; i <= tab_bombes.length - 1; i++) {
+                tab_bombes[i].index--;
+            }
+        }
+
+	</script>
+</head>
+
+<body onload="init()">
+
+    <!--    <header id="header" class="EaselJS">
+        <h1><span class="text-product">Reign of GunPowder</span></h1>
+        <p>Test du jeu</p>
+    </header>-->
+
+    <canvas id="myCanvas" width="1000" height="500"></canvas>
+
+</body>
+</html>
