@@ -104,16 +104,16 @@
 	Perso.prototype.PoserBombe = function(){
 		if (!EnDeplacement){
 			if (this.direction == 90){
-				tab_bombes[nbr_bombes] = new Bombe(bombe, new createjs.Point(this.x + 16,this.y - 6));
+			    tab_bombes[nbr_bombes] = new Bombe(bombe, new createjs.Point(this.x + 16,this.y - 6));
 			}
 			else if(this.direction == -90){
-				tab_bombes[nbr_bombes] = new Bombe(bombe, new createjs.Point(this.x - 50,this.y - 6));
+			    tab_bombes[nbr_bombes] = new Bombe(bombe, new createjs.Point(this.x - 50,this.y - 6));
 			}
 			else if(this.direction == -45){
-				tab_bombes[nbr_bombes] = new Bombe(bombe, new createjs.Point(this.x - 16,this.y + 27));
+			    tab_bombes[nbr_bombes] = new Bombe(bombe, new createjs.Point(this.x - 16,this.y + 27));
 			}
 			else if(this.direction == 45){
-				tab_bombes[nbr_bombes] = new Bombe(bombe, new createjs.Point(this.x - 16, this.y - 32));
+			    tab_bombes[nbr_bombes] = new Bombe(bombe, new createjs.Point(this.x - 16, this.y - 32));
 			}
 			
 			stage.addChild(this);
