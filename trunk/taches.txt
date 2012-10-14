@@ -1,0 +1,7 @@
+
+
+__________________________________
+14/10/2012 - Pizzi 
+	Mise en place de l'explosion lorsque la bombe explose. 
+	Pour l'instant j'affiche juste l'image du centre de l'explosion, il me semble que Dim voulait faire des animations
+	au niveau de l'explosion. Je ferai le reste de l'explosion plus tard. 
