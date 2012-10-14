@@ -8,8 +8,8 @@
 (function (window) {
 
     //Attributs de la classe Bombe
-    var TEMPS_EXPLOSION = 100;
-    this.temps = 0;
+    this.TEMPS_EXPLOSION;
+    this.temps;
     this.index;
 
     function Bombe(imgBombe, position) {
@@ -28,6 +28,7 @@
         this.x = position.x;
         this.y = position.y;
         this.temps = 0;
+		this.TEMPS_EXPLOSION = 100;
         this.index = nbr_bombes;
         nbr_bombes++;
         this.AjouterBombe();
@@ -36,7 +37,7 @@
 
     Bombe.prototype.tick = function () {
         this.temps += 1;
-        if (this.temps == TEMPS_EXPLOSION) {
+        if (this.temps == this.TEMPS_EXPLOSION) {
             SupprimerBombe(this.index);
             stage.removeChild(this);
         }
