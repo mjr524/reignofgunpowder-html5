@@ -40,6 +40,7 @@
     <!-- BO -->
     <script src="src/BO/Bombe.js"></script>
     <script src="src/BO/Perso.js"></script>
+	<script src="src/BO/Flamme.js"></script>
     <!-- BLL -->
     <script src="src/BLL/LesBombes.js"></script>
     <script src="src/BLL/LesPersos.js"></script>
@@ -92,6 +93,7 @@
             //Test avec une animation
             perso.src = "images/perso.png";
             bombe.src = "images/bomb.png";
+			explosion.src = "images/explosion.png";
 
             Hero = new Perso(perso);
 
@@ -113,6 +115,9 @@
             Hero.tick();
             for (var i = 0; i < tab_bombes.length; i++) {
                 tab_bombes[i].tick();
+            }
+			for (var i = 0; i < tab_explosion.length; i++) {
+                tab_explosion[i].tick();
             }
             stage.update();
         }
@@ -140,13 +145,23 @@
             }*/
         }
 
+		//Qu'est-ce-que ça fou ici ??? ^^ 
         function SupprimerBombe(index) {
+			tab_explosion[nbr_flammes] = new Flamme(explosion, new createjs.Point(tab_bombes[index].x,tab_bombes[index].y));
             tab_bombes.splice(index, 1);
             nbr_bombes--;
             for (var i = index; i <= tab_bombes.length - 1; i++) {
                 tab_bombes[i].index--;
             }
         }
+		
+		function SupprimerFlamme(index) {
+			tab_explosion.splice(index, 1);
+			nbr_flammes --;
+			for (var i = index; i <= tab_explosion.length - 1; i++) {
+				tab_explosion[i].index--;
+			}
+		}
 
 	</script>
 </head>
