@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
-    <title>ReingOfGamepowder</title>
+    <title>ReignOfGunpowder</title>
 
     <!-- Références WinJS -->
     <!--    <link href="//Microsoft.WinJS.1.0/css/ui-dark.css" rel="stylesheet" />
@@ -69,8 +69,10 @@
         var perso = new Image();
         var bombe = new Image();
 		var explosion = new Image();
+		var arbre = new Image();
         var Hero = null;
         var Bebom = null;
+		var Arbre = null;
 
         var KEYCODE_SPACE = 32;		//usefull keycode
         var KEYCODE_DOWN = 40;
@@ -98,13 +100,15 @@
             perso.src = "images/perso.png";
             bombe.src = "images/bomb.png";
 			explosion.src = "images/explosion.png";
+			arbre.src = "images/stump.png";
 
             Hero = new Perso(perso);
+			
 
             // On lance la séquence d’animation
-
             stage.addChild(map);
             stage.addChild(fpsLabel);
+			Arbre = new Decor(arbre, new createjs.Point(150,150));
             stage.addChild(Hero);
             stage.update();
 
