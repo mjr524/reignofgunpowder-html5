@@ -41,6 +41,7 @@
     <script src="src/BO/Bombe.js"></script>
     <script src="src/BO/Perso.js"></script>
 	<script src="src/BO/Flamme.js"></script>
+	<script src="src/BO/Decor.js"></script>
     <!-- BLL -->
     <script src="src/BLL/LesBombes.js"></script>
     <script src="src/BLL/LesPersos.js"></script>
@@ -151,7 +152,7 @@
 		//Qu'est-ce-que ça fou ici ??? ^^ En faite j'ai l'impression qu'on a pas le choix pour l'instant :)
         function SupprimerBombe(index) {
 			//tab_explosion[nbr_flammes] = new Flamme(explosion, new createjs.Point(tab_bombes[index].x,tab_bombes[index].y));
-			CreerExplosion(new createjs.Point(tab_bombes[index].x, tab_bombes[index].y),1);
+			CreerExplosion(new createjs.Point(tab_bombes[index].x, tab_bombes[index].y),10);
             tab_bombes.splice(index, 1);
             nbr_bombes--;
             for (var i = index; i <= tab_bombes.length - 1; i++) {
