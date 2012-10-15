@@ -53,6 +53,9 @@
         var stage;
         var fpsLabel;
         var map;
+		
+		//Les constantes
+		/* TODO : COMME LA TAILLE D'UNE CASE ET LA TAILLE DE LA MAP */
 
         //Les différents tableaux
         var tab_bombes = [];
@@ -145,9 +148,10 @@
             }*/
         }
 
-		//Qu'est-ce-que ça fou ici ??? ^^ 
+		//Qu'est-ce-que ça fou ici ??? ^^ En faite j'ai l'impression qu'on a pas le choix pour l'instant :)
         function SupprimerBombe(index) {
-			tab_explosion[nbr_flammes] = new Flamme(explosion, new createjs.Point(tab_bombes[index].x,tab_bombes[index].y));
+			//tab_explosion[nbr_flammes] = new Flamme(explosion, new createjs.Point(tab_bombes[index].x,tab_bombes[index].y));
+			CreerExplosion(new createjs.Point(tab_bombes[index].x, tab_bombes[index].y),1);
             tab_bombes.splice(index, 1);
             nbr_bombes--;
             for (var i = index; i <= tab_bombes.length - 1; i++) {
@@ -160,6 +164,19 @@
 			nbr_flammes --;
 			for (var i = index; i <= tab_explosion.length - 1; i++) {
 				tab_explosion[i].index--;
+			}
+		}
+		
+		function CreerExplosion(position, puissance){
+			for (var i = puissance; i >= 0; i--) {
+				if(i==0)
+					tab_explosion[nbr_flammes] = new Flamme(explosion, new createjs.Point(position.x,position.y));
+				else{
+					tab_explosion[nbr_flammes] = new Flamme(explosion, new createjs.Point(position.x + i*32,position.y));
+					tab_explosion[nbr_flammes] = new Flamme(explosion, new createjs.Point(position.x - i*32,position.y));
+					tab_explosion[nbr_flammes] = new Flamme(explosion, new createjs.Point(position.x,position.y + i*32));
+					tab_explosion[nbr_flammes] = new Flamme(explosion, new createjs.Point(position.x,position.y - i*32));
+				}	
 			}
 		}
 
