@@ -104,12 +104,11 @@
 			arbre.src = "images/stump.png";
 
             Hero = new Perso(perso);
-			var rectangle = new XNARectangle(10, 10, 100, 100);
 
             // On lance la séquence d’animation
             stage.addChild(map);
             stage.addChild(fpsLabel);
-			Arbre = new Decor(arbre, new createjs.Point(150,150));
+			//Arbre = new Decor(arbre, new createjs.Point(150,150));
             stage.addChild(Hero);
             stage.update();
 

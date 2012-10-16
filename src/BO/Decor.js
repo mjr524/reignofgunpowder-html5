@@ -9,7 +9,7 @@
 
     //Attributs de la classe Decor
 	this.IsColliseable;
-	this.rectangle;
+	var rectangle;
 
     function Decor(imgDecor, position) {
         this.initialize(imgDecor, position);
@@ -27,7 +27,7 @@
 		this.x = position.x;
 		this.y = position.y;
 		this.IsColliseable = true;
-		//this.rectangle = new XNARectangle(100, 100, 100, 150);
+		this.rectangle = new XNARectangle(100, 100, 100, 150);
 		stage.addChild(this);
     }
 
