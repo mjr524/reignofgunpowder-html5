@@ -10,15 +10,15 @@
     function XNARectangle(x, y, width, height) {
         this.initialize(x, y, width, height);
     }
-    XNARectangle.prototype = new Rectangle();
+    XNARectangle.prototype = new createjs.Rectangle();
 
     // constructor:
     XNARectangle.prototype.Rectangle_initialize = XNARectangle.prototype.initialize;
 
     XNARectangle.prototype.initialize = function (x, y, width, height) {
         this.Rectangle_initialize(x, y, width, height);
-        this.Location = new Point(this.x, this.y);
-        this.Center = new Point(parseInt(this.x + this.width / 2), parseInt(this.y + this.height / 2));
+        this.Location = new createjs.Point(this.x, this.y);
+        this.Center = new createjs.Point(parseInt(this.x + this.width / 2), parseInt(this.y + this.height / 2));
     };
 
     XNARectangle.prototype.Left = function () {
@@ -55,8 +55,10 @@
 
     // Checking if the targetted rectangle intersects with this rectangle
     XNARectangle.prototype.Intersects = function (targetRectangle) {
-        if (targetRectangle.x < this.x + this.width && this.x < targetRectangle.x + targetRectangle.width && targetRectangle.y < this.y + this.height)
+        if (targetRectangle.x < this.x + this.width && this.x < targetRectangle.x + targetRectangle.width && targetRectangle.y < this.y + this.height && this.y < targetRectangle.y + targetRectangle.height)
+		{
             return this.y < targetRectangle.y + targetRectangle.height;
+		}
         else
             return false;
     };

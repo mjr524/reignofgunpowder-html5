@@ -8,9 +8,14 @@
 (function (window) {
     
 	//Attributs de la classe Perso
-	var nextX = 0;
-	var nextY = 0;
+	this.nextX = 0;
+	this.nextY = 0;
+	this.preX = 0;
+	this.preY = 0;
+	this.width;
+	this.height;
 	var EnDeplacement = false;
+	this.rectangle;
 
     function Perso(imgPerso) {
         this.initialize(imgPerso);
@@ -28,7 +33,7 @@
 		// image à utiliser et à découper
 		images: [imgPerso], 
 		// largeur, hauteur & point central de chacun des sprites
-		frames: {width: 32, height: 48, regX: 16, regY: 24}, 
+		frames: {width: 32, height: 48, regX: 0, regY: 0}, 
 		animations: {    
 			bas: [0, 3, "bas",8],
 			gauche: [4, 7, "gauche",8],
@@ -41,9 +46,12 @@
 		this.direction = -45;
 		this.vX = 1;
 		this.x = 500;
-		this.y = 150;
-		nextX = this.x;
-		nextY = this.y;
+		this.y = 200;
+		this.nextX = this.x;
+		this.nextY = this.y;
+		this.width = imgPerso.width/16;
+		this.height = imgPerso.height;
+		this.rectangle = new XNARectangle(this.x, this.y, imgPerso.width, imgPerso.height);
 		this.currentFrame = 0;
 	}
 	
@@ -51,37 +59,69 @@
 		if (!EnDeplacement){
 			if (TypeDeplacement == 4){
 				this.gotoAndPlay("gauche");
-				nextX = this.x - 32;
-				nextY = this.y;
+				this.nextX = this.x - 32;
+				this.nextY = this.y;
+				if (Arbre.rectangle.Intersects(this.RetourRectangle())==false)
+				{
 				this.direction = -90;
 				EnDeplacement = true;
+				}
+				else
+				{
+					this.nextX = this.x;
+					this.nextY = this.y;
+				}
 			}
 			if (TypeDeplacement == 1){
 				this.gotoAndPlay("haut");
-				nextX = this.x;
-				nextY = this.y - 32;
+				this.nextX = this.x;
+				this.nextY = this.y - 32;
+				if (Arbre.rectangle.Intersects(this.RetourRectangle())==false)
+				{
 				this.direction = 45;
 				EnDeplacement = true;
+				}
+				else
+				{
+					this.nextX = this.x;
+					this.nextY = this.y;
+				}
 			}
 			if (TypeDeplacement == 2){
 				this.gotoAndPlay("droite");
-				nextX = this.x + 32;
-				nextY = this.y;
+				this.nextX = this.x + 32;
+				this.nextY = this.y;
+				if (Arbre.rectangle.Intersects(this.RetourRectangle())==false)
+				{
 				this.direction = 90;
 				EnDeplacement = true;
+				}
+				else
+				{
+					this.nextX = this.x;
+					this.nextY = this.y;
+				}
 			}
 			if (TypeDeplacement == 3){
 				this.gotoAndPlay("bas");
-				nextX = this.x;
-				nextY = this.y + 32;
+				this.nextX = this.x;
+				this.nextY = this.y + 32;
+				if (Arbre.rectangle.Intersects(this.RetourRectangle())==false)
+				{
 				this.direction = -45;
 				EnDeplacement = true;
+				}
+				else
+				{
+					this.nextX = this.x;
+					this.nextY = this.y;
+				}
 			}
 		}
 	}
 
     Perso.prototype.tick = function () {
-        if (nextX == this.x && nextY == this.y){
+        if (this.nextX == this.x && this.nextY == this.y){
 			EnDeplacement = false;
 			this.stop();
 		}
@@ -104,20 +144,24 @@
 	Perso.prototype.PoserBombe = function(){
 		if (!EnDeplacement){
 			if (this.direction == 90){
-			    tab_bombes[nbr_bombes] = new Bombe(bombe, new createjs.Point(this.x + 16,this.y - 6));
+			    tab_bombes[nbr_bombes] = new Bombe(bombe, new createjs.Point(this.x + 32,this.y + (this.height-32)));
 			}
 			else if(this.direction == -90){
-			    tab_bombes[nbr_bombes] = new Bombe(bombe, new createjs.Point(this.x - 50,this.y - 6));
+			    tab_bombes[nbr_bombes] = new Bombe(bombe, new createjs.Point(this.x - 32,this.y + (this.height-32)));
 			}
 			else if(this.direction == -45){
-			    tab_bombes[nbr_bombes] = new Bombe(bombe, new createjs.Point(this.x - 16,this.y + 27));
+			    tab_bombes[nbr_bombes] = new Bombe(bombe, new createjs.Point(this.x,this.y + 32 + (this.height-32)));
 			}
 			else if(this.direction == 45){
-			    tab_bombes[nbr_bombes] = new Bombe(bombe, new createjs.Point(this.x - 16, this.y - 32));
+			    tab_bombes[nbr_bombes] = new Bombe(bombe, new createjs.Point(this.x, this.y - 32 + (this.height-32)));
 			}
 			
 			stage.addChild(this);
 		}
+	}
+	
+	Perso.prototype.RetourRectangle = function(){
+		return new XNARectangle(this.nextX, this.nextY, this.width, this.height);
 	}
 	
     window.Perso = Perso;
