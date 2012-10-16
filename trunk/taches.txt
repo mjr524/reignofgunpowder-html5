@@ -1,4 +1,7 @@
-
+16/10/2012 - Pizzi
+	Mise en place des collisions. Mais pour l'instant je considère tout l'image dans 
+	la collision. Il faudrait trouver un moyen de sélectionner juste une zone de
+	façon propre. 
 
 __________________________________
 14/10/2012 - Pizzi 
