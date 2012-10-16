@@ -37,6 +37,7 @@
 
     <!-- Nos Librairies -->
     <!-- Utils -->
+	<script src="src/Utils/XNARectangle.js"></script>
     <!-- BO -->
     <script src="src/BO/Bombe.js"></script>
     <script src="src/BO/Perso.js"></script>
@@ -103,7 +104,7 @@
 			arbre.src = "images/stump.png";
 
             Hero = new Perso(perso);
-			
+			var rectangle = new XNARectangle(10, 10, 100, 100);
 
             // On lance la séquence d’animation
             stage.addChild(map);
