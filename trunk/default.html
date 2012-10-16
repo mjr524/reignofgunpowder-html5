@@ -101,14 +101,14 @@
             perso.src = "images/perso.png";
             bombe.src = "images/bomb.png";
 			explosion.src = "images/explosion.png";
-			arbre.src = "images/stump.png";
+			arbre.src = "images/stump.png"; //test
 
             Hero = new Perso(perso);
 
             // On lance la séquence d’animation
             stage.addChild(map);
-            stage.addChild(fpsLabel);
-			//Arbre = new Decor(arbre, new createjs.Point(150,150));
+            stage.addChild(fpsLabel);			
+			Arbre = new Decor(arbre, new createjs.Point(200,200));
             stage.addChild(Hero);
             stage.update();
 
