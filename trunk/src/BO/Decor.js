@@ -32,7 +32,7 @@
     }
 
     Decor.prototype.tick = function () {
-		//Normalement pas nécessaire 
+		//Normalement pas besoin
     }
 
     window.Decor = Decor;
