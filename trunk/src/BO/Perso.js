@@ -63,10 +63,10 @@
 				this.gotoAndPlay("gauche");
 				this.nextX = this.x - 32;
 				this.nextY = this.y;
+				this.direction = -90;
 				if (Arbre.rectangle.Intersects(this.RetourRectangle())==false)
 				{
-				this.direction = -90;
-				EnDeplacement = true;
+					EnDeplacement = true;
 				}
 				else
 				{
@@ -78,10 +78,10 @@
 				this.gotoAndPlay("haut");
 				this.nextX = this.x;
 				this.nextY = this.y - 32;
+				this.direction = 45;
 				if (Arbre.rectangle.Intersects(this.RetourRectangle())==false)
 				{
-				this.direction = 45;
-				EnDeplacement = true;
+					EnDeplacement = true;
 				}
 				else
 				{
@@ -93,10 +93,10 @@
 				this.gotoAndPlay("droite");
 				this.nextX = this.x + 32;
 				this.nextY = this.y;
+				this.direction = 90;
 				if (Arbre.rectangle.Intersects(this.RetourRectangle())==false)
 				{
-				this.direction = 90;
-				EnDeplacement = true;
+					EnDeplacement = true;
 				}
 				else
 				{
@@ -108,10 +108,10 @@
 				this.gotoAndPlay("bas");
 				this.nextX = this.x;
 				this.nextY = this.y + 32;
+				this.direction = -45;
 				if (Arbre.rectangle.Intersects(this.RetourRectangle())==false)
 				{
-				this.direction = -45;
-				EnDeplacement = true;
+					EnDeplacement = true;
 				}
 				else
 				{
