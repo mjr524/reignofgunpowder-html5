@@ -163,7 +163,7 @@
 	}
 	
 	Perso.prototype.RetourRectangle = function(){
-		return new XNARectangle(this.nextX, this.nextY, this.width, this.height);
+		return new XNARectangle(this.nextX, this.nextY + 48, 1, 1);
 	}
 	
 	Perso.prototype.AjouterPerso = function () {

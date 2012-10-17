@@ -27,7 +27,7 @@
 		this.x = position.x;
 		this.y = position.y;
 		this.IsColliseable = true;
-		this.rectangle = new XNARectangle(this.x, this.y, 100, 150);
+		this.rectangle = new XNARectangle(this.x + 10, this.y + 70, 25, 25);
 		this.AjouterDecor();
     }
 
