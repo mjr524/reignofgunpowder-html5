@@ -60,11 +60,12 @@
 		/* TODO : COMME LA TAILLE D'UNE CASE ET LA TAILLE DE LA MAP */
 
         //Les différents tableaux
-        var tab_bombes = [];
+        //var tab_bombes = [];
+        var tab_bombes = LesBombes.getInstance();
 		var tab_explosion = [];
 
         //Compteurs
-        var nbr_bombes = 0;
+        //var nbr_bombes = 0;
 		var nbr_flammes = 0;
 
         var perso = new Image();
@@ -120,8 +121,11 @@
         function tick() {
             fpsLabel.text = Math.round(createjs.Ticker.getMeasuredFPS()) + " fps";
             Hero.tick();
-            for (var i = 0; i < tab_bombes.length; i++) {
-                tab_bombes[i].tick();
+            //for (var i = 0; i < tab_bombes.lesBombes.length; i++) {
+            //    tab_bombes[i].tick();
+            //}
+            for (var i = 0; i < tab_bombes.lesBombes.length; i++) {
+                tab_bombes.lesBombes[i].tick();
             }
 			for (var i = 0; i < tab_explosion.length; i++) {
                 tab_explosion[i].tick();
@@ -153,15 +157,15 @@
         }
 
 		//Qu'est-ce-que ça fou ici ??? ^^ En faite j'ai l'impression qu'on a pas le choix pour l'instant :)
-        function SupprimerBombe(index) {
-			//tab_explosion[nbr_flammes] = new Flamme(explosion, new createjs.Point(tab_bombes[index].x,tab_bombes[index].y));
-			CreerExplosion(new createjs.Point(tab_bombes[index].x, tab_bombes[index].y),10);
-            tab_bombes.splice(index, 1);
-            nbr_bombes--;
-            for (var i = index; i <= tab_bombes.length - 1; i++) {
-                tab_bombes[i].index--;
-            }
-        }
+        //function SupprimerBombe(index) {
+		//	//tab_explosion[nbr_flammes] = new Flamme(explosion, new createjs.Point(tab_bombes[index].x,tab_bombes[index].y));
+		//	CreerExplosion(new createjs.Point(tab_bombes[index].x, tab_bombes[index].y),10);
+        //    tab_bombes.splice(index, 1);
+        //    nbr_bombes--;
+        //    for (var i = index; i <= tab_bombes.length - 1; i++) {
+        //        tab_bombes[i].index--;
+        //    }
+        //}
 		
 		function SupprimerFlamme(index) {
 			tab_explosion.splice(index, 1);

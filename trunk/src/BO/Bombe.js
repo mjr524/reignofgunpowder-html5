@@ -29,23 +29,26 @@
         this.y = position.y;
         this.temps = 0;
 		this.TEMPS_EXPLOSION = 100;
-        this.index = nbr_bombes;
-        nbr_bombes++;
-        this.AjouterBombe();
+        //this.index = nbr_bombes;
+		this.index = tab_bombes.getNbBombes();
+		//nbr_bombes++;
+        //this.AjouterBombe();
+		tab_bombes.add(this);
     }
 
 
     Bombe.prototype.tick = function () {
         this.temps += 1;
         if (this.temps == this.TEMPS_EXPLOSION) {
-            SupprimerBombe(this.index);
+            //SupprimerBombe(this.index);
+            tab_bombes.deleteAtIndex(this.index);
             stage.removeChild(this);
         }
     }
 
-    Bombe.prototype.AjouterBombe = function () {
-        stage.addChild(this);
-    }
+    //Bombe.prototype.AjouterBombe = function () {
+    //    stage.addChild(this);
+    //}
 
     window.Bombe = Bombe;
 }(window));
