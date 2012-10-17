@@ -11,6 +11,7 @@
 	this.TEMPS_FLAMME;
     this.temps;
 	this.index;
+	this.rectangle;
 
     function Flamme(imgFlamme, position) {
         this.initialize(imgFlamme, position);
@@ -39,6 +40,7 @@
 		this.currentFrame = 0;
 		this.temps = 0;
 		this.TEMPS_FLAMME = 10;
+		this.rectangle = new XNARectangle(this.x, this.y, imgFlamme.width/3, imgFlamme.height/3);
 		this.AjouterFlamme();
     }
 
@@ -49,6 +51,18 @@
             SupprimerFlamme(this.index);
             stage.removeChild(this);
         }
+		
+		if (this.rectangle.Intersects(Hero.RetourRectangle()) != false)
+		{
+			//Le perso a été touché par une flamme
+			stage.removeChild(Hero);
+		}
+		
+		if (this.rectangle.Intersects(Arbre.rectangle) != false)
+		{
+			//Le perso a été touché par une flamme
+			stage.removeChild(Arbre);
+		}
     }
 	
 	Flamme.prototype.AjouterFlamme = function () {
