@@ -27,13 +27,17 @@
 		this.x = position.x;
 		this.y = position.y;
 		this.IsColliseable = true;
-		this.rectangle = new XNARectangle(this.x, this.y, imgDecor.width, imgDecor.height);
-		stage.addChild(this);
+		this.rectangle = new XNARectangle(this.x, this.y, 100, 150);
+		this.AjouterDecor();
     }
 
     Decor.prototype.tick = function () {
 		//Normalement pas besoin
     }
+	
+	Decor.prototype.AjouterDecor = function () {
+		stage.addChild(this);
+	}
 
     window.Decor = Decor;
 }(window));

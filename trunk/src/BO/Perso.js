@@ -50,9 +50,11 @@
 		this.nextX = this.x;
 		this.nextY = this.y;
 		this.width = imgPerso.width/16;
-		this.height = imgPerso.height;
+		this.height = 48;
+		this.width = 32;
 		this.rectangle = new XNARectangle(this.x, this.y, imgPerso.width, imgPerso.height);
 		this.currentFrame = 0;
+		this.AjouterPerso();
 	}
 	
 	Perso.prototype.Deplacer = function(TypeDeplacement){
@@ -162,6 +164,10 @@
 	
 	Perso.prototype.RetourRectangle = function(){
 		return new XNARectangle(this.nextX, this.nextY, this.width, this.height);
+	}
+	
+	Perso.prototype.AjouterPerso = function () {
+		stage.addChild(this);
 	}
 	
     window.Perso = Perso;
