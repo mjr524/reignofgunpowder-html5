@@ -1,3 +1,9 @@
+20/10/2012 - Pizzi
+	Ecriture de la classe Bombe.js. La mise en place dans le main n'a pas encore
+	été effectué. Si cela ne fonctionne pas, c'est normal j'ai modifié le constructeur
+	sur cette classe. 
+
+__________________________________
 16/10/2012 - Pizzi
 	Mise en place des collisions. Mais pour l'instant je considère tout l'image dans 
 	la collision. Il faudrait trouver un moyen de sélectionner juste une zone de
