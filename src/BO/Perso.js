@@ -147,19 +147,19 @@
 		if (!EnDeplacement){
 			if (this.direction == 90){
 			    //tab_bombes[nbr_bombes] = new Bombe(bombe, new createjs.Point(this.x + 32,this.y + (this.height-32)));
-			    new Bombe(bombe, new createjs.Point(this.x + 32, this.y + (this.height - 32)));
+			    new Bombe(bombe, bombeRouge,new createjs.Point(this.x + 32, this.y + (this.height - 32)), 100);
 			}
 			else if(this.direction == -90){
 			    //tab_bombes[nbr_bombes] = new Bombe(bombe, new createjs.Point(this.x - 32,this.y + (this.height-32)));
-			    new Bombe(bombe, new createjs.Point(this.x - 32, this.y + (this.height - 32)));
+			    new Bombe(bombe, bombeRouge, new createjs.Point(this.x - 32, this.y + (this.height - 32)), 100);
 			}
 			else if(this.direction == -45){
 			    //tab_bombes[nbr_bombes] = new Bombe(bombe, new createjs.Point(this.x, this.y + 32 + (this.height - 32)));
-			    new Bombe(bombe, new createjs.Point(this.x, this.y + 32 + (this.height - 32)));
+			    new Bombe(bombe, bombeRouge,new createjs.Point(this.x, this.y + 32 + (this.height - 32)), 100);
 			}
 			else if(this.direction == 45){
 			    //tab_bombes[nbr_bombes] = new Bombe(bombe, new createjs.Point(this.x, this.y - 32 + (this.height - 32)));
-			    new Bombe(bombe, new createjs.Point(this.x, this.y - 32 + (this.height - 32)));
+			    new Bombe(bombe, bombeRouge, new createjs.Point(this.x, this.y - 32 + (this.height - 32)), 100);
 			}
 			
 			stage.addChild(this);
