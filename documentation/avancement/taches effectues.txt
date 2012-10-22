@@ -1,3 +1,9 @@
+22/10/2012 - Jo
+	Mise en place de la partie BLL LesPersos et création du document règles de nommages en JS/SQL
+	A voir pour modifier certaines règles de nommages, j'attends les retours et nouvelles propositions ;)
+
+__________________________________
+
 21/10/2012 - Pizzi
 	Mise en place de la nouvelle classe bombe dans le main (Perso.js)
 	D'ailleurs la méthode poserBombe ne devrait pas se trouver là.
