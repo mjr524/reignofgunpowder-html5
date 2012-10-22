@@ -3,7 +3,7 @@
 //
 //	Author : Pizzi 
 //	Dcreat : 22/10/2012
-//	Dmodif : 22/10/2012 13:30
+//	Dmodif : 22/10/2012 22:30
 //-----------------------------------------------------------------------------
 
 /// <summary>
@@ -12,18 +12,18 @@
 (function (window) {
     
 	//Attributs de la classe Perso
-	this.nextX = 0;  // La prochaine coordonnée X du perso
-	this.nextY = 0; // La prochaine coordonnée Y du perso
-	this.preX = 0; // La précédente coordonnée X du perso 
-	this.preY = 0;  // La précédente coordonnée Y du perso
+	this.nextX = 0;  // La prochaine coordonnï¿½e X du perso
+	this.nextY = 0; // La prochaine coordonnï¿½e Y du perso
+	this.preX = 0; // La prï¿½cï¿½dente coordonnï¿½e X du perso 
+	this.preY = 0;  // La prï¿½cï¿½dente coordonnï¿½e Y du perso
 	this.direction; // La direction du personnage : haut=1 / droite=2 / bas=3 / gauche=4
 	this.width; // La largeur du perso
 	this.height; // La hauteur du perso
-	this.EnDeplacement = false; // Le déplacement est-il en train de se déplacer?
+	this.EnDeplacement = false; // Le dï¿½placement est-il en train de se dï¿½placer?
 	this.rectangle; // Le rectangue du perso
 
     function Perso(imgPerso, position, taille) {
-        this.initialize(imgPerso, position);
+        this.initialize(imgPerso, position, taille);
     }
     
 	// Using EaselJS BitmapSequence as the based prototype
@@ -36,7 +36,7 @@
 	// Initialisation du perso
     Perso.prototype.initialize = function (imgPerso, position, taille) {
         var spriteSheet = new createjs.SpriteSheet({
-		// image à utiliser et à découper
+		// image ï¿½ utiliser et ï¿½ dï¿½couper
 		images: [imgPerso], 
 		// largeur, hauteur & point central de chacun des sprites
 		frames: {width: taille.x, height: taille.y, regX: 0, regY: 0}, 
@@ -49,10 +49,10 @@
 		});
 		// -- Initialisation de l'animation 
 		this.BitmapAnimation_initialize(spriteSheet);
-		this.vX = 1; // Défilement de l'animation
+		this.vX = 1; // Dï¿½filement de l'animation
 		this.currentFrame = 0;
 		// -- Position, direction et dimension du perso
-		this.direction = 3; // Direction vers le bas par défaut
+		this.direction = 3; // Direction vers le bas par dï¿½faut
 		this.x = position.x;
 		this.y = position.y;
 		this.nextX = this.x;
@@ -95,7 +95,7 @@
 				this.nextX = this.x - 32; // Mettre valeurs d'une case en globale
 				this.nextY = this.y;
 				this.direction = 4;
-				if (Arbre.rectangle.Intersects(this.RetourRectangle())==false) // A modifier lors de la création les décors
+				if (Arbre.rectangle.Intersects(this.GetRectangle())==false) // A modifier lors de la crï¿½ation les dï¿½cors
 				{
 					EnDeplacement = true;
 				}
@@ -110,7 +110,7 @@
 				this.nextX = this.x;
 				this.nextY = this.y - 32;
 				this.direction = 1;
-				if (Arbre.rectangle.Intersects(this.RetourRectangle())==false) // A modifier lors de la création les décors
+				if (Arbre.rectangle.Intersects(this.GetRectangle())==false) // A modifier lors de la crï¿½ation les dï¿½cors
 				{
 					EnDeplacement = true;
 				}
@@ -125,7 +125,7 @@
 				this.nextX = this.x + 32;
 				this.nextY = this.y;
 				this.direction = 2;
-				if (Arbre.rectangle.Intersects(this.RetourRectangle())==false) // A modifier lors de la création les décors
+				if (Arbre.rectangle.Intersects(this.GetRectangle())==false) // A modifier lors de la crï¿½ation les dï¿½cors
 				{
 					EnDeplacement = true;
 				}
@@ -140,7 +140,7 @@
 				this.nextX = this.x;
 				this.nextY = this.y + 32;
 				this.direction = 3;
-				if (Arbre.rectangle.Intersects(this.RetourRectangle())==false)  // A modifier lors de la création les décors
+				if (Arbre.rectangle.Intersects(this.GetRectangle())==false)  // A modifier lors de la crï¿½ation les dï¿½cors
 				{ 
 					EnDeplacement = true;
 				}
@@ -153,7 +153,7 @@
 		}
 	}
 
-	// Poser une bombe ===> Rien à faire ici
+	// Poser une bombe ===> Rien ï¿½ faire ici
 	Perso.prototype.PoserBombe = function(){
 		if (!EnDeplacement){
 			if (this.direction == 2){
@@ -179,7 +179,8 @@
 	
 	// Actualise et retourne le rectange du perso
 	Perso.prototype.GetRectangle = function(){
-		return new XNARectangle(this.nextX, this.nextY + this.width, 1, 1);
+		this.rectangle = new XNARectangle(this.nextX, this.nextY + this.width, 1, 1); 
+		return this.rectangle;
 	}
 	
     window.Perso = Perso;

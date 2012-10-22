@@ -26,7 +26,7 @@
 
     Flamme.prototype.initialize = function (imgFlamme, position) {
 		var spriteSheet = new createjs.SpriteSheet({
-		// image à utiliser et à découper
+		// image ï¿½ utiliser et ï¿½ dï¿½couper
 		images: [imgFlamme], 
 		// largeur, hauteur & point central de chacun des sprites
 		frames: {width: 32, height: 32, regX: 0, regY: 0}, 
@@ -52,15 +52,15 @@
             stage.removeChild(this);
         }
 		
-		if (this.rectangle.Intersects(Hero.RetourRectangle()) != false)
+		if (this.rectangle.Intersects(Hero.GetRectangle()) != false)
 		{
-			//Le perso a été touché par une flamme
+			//Le perso a ï¿½tï¿½ touchï¿½ par une flamme
 			stage.removeChild(Hero);
 		}
 		
-		if (this.rectangle.Intersects(Arbre.rectangle) != false)
+		if (this.rectangle.Intersects(Arbre.GetRectangle()) != false)
 		{
-			//Le perso a été touché par une flamme
+			//Le perso a ï¿½tï¿½ touchï¿½ par une flamme
 			stage.removeChild(Arbre);
 		}
     }

@@ -117,8 +117,8 @@
             createjs.Ticker.useRAF = true;
             createjs.Ticker.setFPS(100);
 			
-			Hero = new Perso(perso);
-			Arbre = new Decor(arbre, new createjs.Point(200,200));
+			Hero = new Perso(perso, new createjs.Point( 400, 200), new createjs.Point( 32, 48));
+			Arbre = new Decor(arbre, new createjs.Point(200,200), new createjs.Point(100,150), new XNARectangle(210,270,25,25), true, false);
         }
 
         function tick() {
@@ -158,17 +158,6 @@
                 case keycode_down:	if(hero.y == nexty)enbas = true; break;
             }*/
         }
-
-		//Qu'est-ce-que ça fou ici ??? ^^ En faite j'ai l'impression qu'on a pas le choix pour l'instant :)
-        //function SupprimerBombe(index) {
-		//	//tab_explosion[nbr_flammes] = new Flamme(explosion, new createjs.Point(tab_bombes[index].x,tab_bombes[index].y));
-		//	CreerExplosion(new createjs.Point(tab_bombes[index].x, tab_bombes[index].y),10);
-        //    tab_bombes.splice(index, 1);
-        //    nbr_bombes--;
-        //    for (var i = index; i <= tab_bombes.length - 1; i++) {
-        //        tab_bombes[i].index--;
-        //    }
-        //}
 		
 		function SupprimerFlamme(index) {
 			tab_explosion.splice(index, 1);
