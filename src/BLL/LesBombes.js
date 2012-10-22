@@ -9,10 +9,10 @@
         this.lesBombes = new Array();
         this.nbr_bombes = 0;
 
-        //Si on ne passe pas par getInstance pour récupérer l'instance
-        //On génère une erreur
+        //Si on ne passe pas par getInstance pour rï¿½cupï¿½rer l'instance
+        //On gï¿½nï¿½re une erreur
         if (LesBombes.caller != LesBombes.getInstance) {
-            throw new Error("On ne peut pas instancier LesBombes, on doit la récupérer par getInstance, c'est un singleton");
+            throw new Error("On ne peut pas instancier LesBombes, on doit la rï¿½cupï¿½rer par getInstance, c'est un singleton");
         }
     }
 
