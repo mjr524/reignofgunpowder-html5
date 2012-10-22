@@ -36,12 +36,12 @@
 	// Initialisation de la bombe
     Bombe.prototype.initialize = function (imgBombe, imgBombeRouge, position, temps_explosion) {
         this.Bitmap_initialize(imgBombe);
-		// --- Position et taille de la bombe
+		// -- Position et taille de la bombe
         this.x = position.x;
         this.y = position.y;
 		this.width = imgBombe.width;
 		this.height = imgBombe.height;
-		// --- Les deux images de la bombe
+		// -- Les deux images de la bombe
 		this.imgBombe = imgBombe;
 		this.imgBombeRouge = imgBombeRouge;
 		// -- Les différentes Timers de la bombe
