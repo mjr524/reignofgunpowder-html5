@@ -54,7 +54,8 @@
 		this.width = 32;
 		this.rectangle = new XNARectangle(this.x, this.y, imgPerso.width, imgPerso.height);
 		this.currentFrame = 0;
-		this.AjouterPerso();
+		//this.AjouterPerso();
+		tab_persos.add(this);
 	}
 	
 	Perso.prototype.Deplacer = function(TypeDeplacement){
