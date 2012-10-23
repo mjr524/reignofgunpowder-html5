@@ -115,7 +115,7 @@
             createjs.Ticker.setInterval(17);
             createjs.Ticker.addListener(window);
             createjs.Ticker.useRAF = true;
-            createjs.Ticker.setFPS(100);
+            createjs.Ticker.setFPS(60);
 			
 			Hero = new Perso(perso, new createjs.Point( 400, 200), new createjs.Point( 32, 48));
 			Arbre = new Decor(arbre, new createjs.Point(200,200), new createjs.Point(100,150), new XNARectangle(210,270,25,25), true, false);
@@ -139,6 +139,7 @@
         function handleKeyDown(e) {
             //cross browser issues exist
             if (!e) { var e = window.event; }
+            e.preventDefault();
             switch (e.keyCode) {
                 case KEYCODE_LEFT: Hero.Deplacer(4); break;
                 case KEYCODE_RIGHT: Hero.Deplacer(2); break;
