@@ -22,8 +22,8 @@
 	this.width;  // Largeur de la bombe
 	this.height; // Hauteur de la bombe
 
-    function Bombe(imgBombe, imgBombeRouge, intPosition, intTemps_Explosion) {
-        this.initialize(imgBombe, imgBombeRouge, intPosition, intTemps_Explosion);
+    function Bombe(imgBombe, imgBombeRouge, position, temps_Explosion) {
+        this.initialize(imgBombe, imgBombeRouge, position, temps_Explosion);
     }
 
     // Using EaselJS BitmapSequence as the based prototype
@@ -34,11 +34,11 @@
     Bombe.prototype.Bitmap_initialize = Bombe.prototype.initialize;
 
 	// Initialisation de la bombe
-    Bombe.prototype.initialize = function (imgBombe, imgBombeRouge, intPosition, intTemps_Explosion) {
+    Bombe.prototype.initialize = function (imgBombe, imgBombeRouge, position, temps_Explosion) {
         this.Bitmap_initialize(imgBombe);
 		// -- Position et taille de la bombe
-        this.x = intPosition.x;
-        this.y = intPosition.y;
+        this.x = position.x;
+        this.y = position.y;
 		this.width = imgBombe.width;
 		this.height = imgBombe.height;
 		// -- Les deux images de la bombe
@@ -46,7 +46,7 @@
 		this.imgBombeRouge = imgBombeRouge;
 		// -- Les différentes Timers de la bombe
         this.temps = 0;
-		this.temps_explosion = intTemps_Explosion;
+		this.temps_explosion = temps_Explosion;
 		// -- Initialisation de l'index de la bombe
 		this.index = tab_bombes.getNbBombes();
 		// -- Initialisation du rectange de la bombe
