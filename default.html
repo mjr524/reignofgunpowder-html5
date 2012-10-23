@@ -171,12 +171,12 @@
 		function CreerExplosion(position, puissance){
 			for (var i = puissance; i >= 0; i--) {
 				if(i==0)
-					tab_explosion[nbr_flammes] = new Flamme(explosion, new createjs.Point(position.x,position.y));
+					tab_explosion[nbr_flammes] = new Flamme(explosion, new createjs.Point(position.x,position.y),new createjs.Point(32,32));
 				else{
-					tab_explosion[nbr_flammes] = new Flamme(explosion, new createjs.Point(position.x + i*32,position.y));
-					tab_explosion[nbr_flammes] = new Flamme(explosion, new createjs.Point(position.x - i*32,position.y));
-					tab_explosion[nbr_flammes] = new Flamme(explosion, new createjs.Point(position.x,position.y + i*32));
-					tab_explosion[nbr_flammes] = new Flamme(explosion, new createjs.Point(position.x,position.y - i*32));
+					tab_explosion[nbr_flammes] = new Flamme(explosion, new createjs.Point(position.x + i*32,position.y),new createjs.Point(32,32));
+					tab_explosion[nbr_flammes] = new Flamme(explosion, new createjs.Point(position.x - i*32,position.y),new createjs.Point(32,32));
+					tab_explosion[nbr_flammes] = new Flamme(explosion, new createjs.Point(position.x,position.y + i*32),new createjs.Point(32,32));
+					tab_explosion[nbr_flammes] = new Flamme(explosion, new createjs.Point(position.x,position.y - i*32),new createjs.Point(32,32));
 				}	
 			}
 		}
