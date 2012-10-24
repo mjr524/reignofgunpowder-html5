@@ -42,7 +42,7 @@
         this.lesBombes.splice(index, 1);
         this.nbr_bombes -= 1;
         for (var i = index; i <= this.lesBombes.length - 1; i++) {
-            this.lesBombes[i].index--;
+            this.lesBombes[i].intIndex--;
         }
     }
 
