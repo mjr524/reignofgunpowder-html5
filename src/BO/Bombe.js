@@ -11,10 +11,10 @@
 /// </summary>
 (function (window) {
 
-    //Attributs de la classe Bombe
+    // Attributs de la classe Bombe
     this.intTempsExplosion;  // Temps avant que la bombe explose
 	this.intTempsRouge;  // Temps avant que la bombe rougit
-    this.intTemps;	// Temps écoulé depuis la pause de la bombe
+    this.intTemps;	// Temps écoulé depuis la pose de la bombe
     this.intIndex;   // Index de la bombe dans le tableau
 	this.recRectangle;  // Rectangle de la bombe collision
 	this.imgBombe;  // Image de la bombe à l'initialisation
@@ -22,8 +22,8 @@
 	this.intWidth;  // Largeur de la bombe
 	this.intHeight; // Hauteur de la bombe
 
-    function Bombe(imgBombe, imgBombeRouge, ptnPosition, intTemps_Explosion) {
-        this.initialize(imgBombe, imgBombeRouge, ptnPosition, intTemps_Explosion);
+    function Bombe(imgBombe, imgBombeRouge, ptnPosition, intTempsExplosion) {
+        this.initialize(imgBombe, imgBombeRouge, ptnPosition, intTempsExplosion);
     }
 
     // Using EaselJS BitmapSequence as the based prototype
@@ -34,7 +34,7 @@
     Bombe.prototype.Bitmap_initialize = Bombe.prototype.initialize;
 
 	// Initialisation de la bombe
-    Bombe.prototype.initialize = function (imgBombe, imgBombeRouge, ptnPosition, intTemps_Explosion) {
+    Bombe.prototype.initialize = function (imgBombe, imgBombeRouge, ptnPosition, intTempsExplosion) {
         this.Bitmap_initialize(imgBombe);
 		// -- Position et taille de la bombe
         this.x = ptnPosition.x;
@@ -46,7 +46,7 @@
 		this.imgBombeRouge = imgBombeRouge;
 		// -- Les différentes Timers de la bombe
         this.intTemps = 0;
-		this.intTempsExplosion = intTemps_Explosion;
+		this.intTempsExplosion = intTempsExplosion;
 		// -- Initialisation de l'index de la bombe
 		this.intIndex = tab_bombes.getNbBombes();
 		// -- Initialisation du rectange de la bombe

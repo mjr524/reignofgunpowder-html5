@@ -1,5 +1,6 @@
 24/10/2012 - Pizzi
 	Réecriture et mise en place de la classe bombe.js. Création de la classe bonus.js
+	Mise en place de la classe bonus.js. 
 
 __________________________________
 

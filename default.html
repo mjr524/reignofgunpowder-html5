@@ -43,6 +43,7 @@
     <script src="src/BO/Perso.js"></script>
 	<script src="src/BO/Flamme.js"></script>
 	<script src="src/BO/Decor.js"></script>
+	<script src="src/BO/Bonus.js"></script>
     <!-- BLL -->
     <script src="src/BLL/LesBombes.js"></script>
     <script src="src/BLL/LesPersos.js"></script>
@@ -69,14 +70,17 @@
         //var nbr_bombes = 0;
 		var nbr_flammes = 0;
 
+		//Images
         var perso = new Image();
         var bombe = new Image();
 		var bombeRouge = new Image();
 		var explosion = new Image();
 		var arbre = new Image();
+		var panneau = new Image();
         var Hero = null;
         var Bebom = null;
 		var Arbre = null;
+		var Panneau = null;
 
         var KEYCODE_SPACE = 32;		//usefull keycode
         var KEYCODE_DOWN = 40;
@@ -105,7 +109,8 @@
             bombe.src = "images/bomb.png";
 			bombeRouge.src = "images/bomb2.png";
 			explosion.src = "images/explosion.png";
-			arbre.src = "images/stump.png"; //test
+			arbre.src = "images/stump.png"; 
+			panneau.src = "images/panneau.png";
 
             // On lance la séquence d’animation
             stage.addChild(map);
@@ -119,11 +124,13 @@
 			
 			Hero = new Perso(perso, new createjs.Point( 400, 200), new createjs.Point( 32, 48));
 			Arbre = new Decor(arbre, new createjs.Point(200,200), new createjs.Point(100,150), new XNARectangle(210,270,25,25), true, false);
+			Panneau = new Bonus(panneau, new createjs.Point(400,400),new createjs.Point(32,32),new XNARectangle(400,400,32,32));
         }
 
         function tick() {
             fpsLabel.text = Math.round(createjs.Ticker.getMeasuredFPS()) + " fps";
             Hero.tick();
+            Panneau.tick();
             //for (var i = 0; i < tab_bombes.lesBombes.length; i++) {
             //    tab_bombes[i].tick();
             //}
@@ -191,7 +198,7 @@
         <p>Test du jeu</p>
     </header>-->
 
-    <canvas id="myCanvas" width="1000" height="500"></canvas>
+    <canvas id="myCanvas" width="1000" height="500">ROG</canvas>
 
 </body>
 </html>
