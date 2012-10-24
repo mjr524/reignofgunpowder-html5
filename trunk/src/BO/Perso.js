@@ -157,8 +157,8 @@
 	}
 	
 	// Actualise et retourne le rectange du perso
-	Perso.prototype.GetrecRectangle = function(){
-		this.recRectangle = new XNArecRectangle(this.intNextX, this.intNextY + this.intWidth, 1, 1); 
+	Perso.prototype.GetRectangle = function(){
+		this.recRectangle = new XNARectangle(this.intNextX, this.intNextY + this.intWidth, 1, 1); 
 		return this.recRectangle;
 	}
 	

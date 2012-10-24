@@ -67,13 +67,13 @@
             stage.removeChild(this);
         }
 		
-		if (this.GetRectangle.Intersects(Hero.GetRectangle()) != false)
+		if (this.GetRectangle().Intersects(Hero.GetRectangle()) != false)
 		{
 			//Le perso a �t� touch� par une flamme
 			stage.removeChild(Hero);
 		}
 		
-		if (this.GetRectangle.Intersects(Arbre.GetRectangle()) != false)
+		if (this.GetRectangle().Intersects(Arbre.GetRectangle()) != false)
 		{
 			//Le perso a �t� touch� par une flamme
 			stage.removeChild(Arbre);
