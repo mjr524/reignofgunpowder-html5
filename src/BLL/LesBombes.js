@@ -1,4 +1,11 @@
-//LesBombes.js
+//-----------------------------------------------------------------------------
+// LesBombes.js			:  Classe contenant toutes les bombes
+//
+//	Author : Jo 
+//	Dcreat : *
+//	Dmodif : 24/10/2012 19:40
+//-----------------------------------------------------------------------------
+
 (function (window)
 {
     //Instance de la classe
