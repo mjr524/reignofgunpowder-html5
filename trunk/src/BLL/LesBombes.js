@@ -54,17 +54,20 @@
 			// -- On vérifie si la bombe doit exploser
 	        if (this.lesBombes[i].intTemps >= this.lesBombes[i].intTempsExplosion) {
 	            this.deleteAtIndex(this.lesBombes[i].intIndex);
-				// On enlève la bombe du dessin
-	            stage.removeChild(this.lesBombes[i]);
 	        }
         }
     }
 
     //Supprime une bombe par son index
     LesBombes.prototype.deleteAtIndex = function (index) {
+    	// -- On crée l'explosion
         CreerExplosion(new createjs.Point(this.lesBombes[index].x, this.lesBombes[index].y), 10);
+        // -- On enlève la bombe du dessin
+        stage.removeChild(this.lesBombes[index]);
+        // -- On supprimr la bombe du tableau
         this.lesBombes.splice(index, 1);
         this.nbr_bombes -= 1;
+        // -- On remet les index pour les autres bombes
         for (var i = index; i <= this.lesBombes.length - 1; i++) {
             this.lesBombes[i].intIndex--;
         }
