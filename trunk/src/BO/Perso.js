@@ -66,28 +66,6 @@
 		tab_persos.add(this);
 	}
 	
-	// Boucle sur un perso
-	Perso.prototype.tick = function () {
-        if (this.intNextX == this.x && this.intNextY == this.y){
-			this.bolEnDeplacement = false;
-			this.stop();
-		}
-		else{
-			if (this.intDirection == 2){
-				this.x += this.vX;
-			}
-			else if(this.intDirection == 4){
-				this.x -= this.vX;
-			}
-			if (this.intDirection == 1){
-				this.y -= this.vX;
-			}
-			else if(this.intDirection == 3){
-				this.y += this.vX;
-			}
-		}
-    }
-	
 	// Deplacement du personnage
 	Perso.prototype.Deplacer = function(TypeDeplacement){
 		if (TypeDeplacement == 4){
