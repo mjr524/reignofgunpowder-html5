@@ -54,21 +54,6 @@
 		// -- On fini en ajoutant la bombe sur le dessin
 		tab_bombes.add(this);
     }
-
-	// Boucle sur une bombe
-    Bombe.prototype.tick = function () {
-        this.intTemps += 1;
-		// -- On vérifie si la bombe doit rougir
-		if (this.intTemps == this.intTempsExplosion - (30)){   // Pour l'instant mis en brute il faudra trouver une solution pour que cela soit proportionnel au temps explosion
-			this.RougirBombe();
-		}
-		// -- On vérifie si la bombe doit exploser
-        if (this.intTemps >= this.intTempsExplosion) {
-            tab_bombes.deleteAtIndex(this.intIndex);
-			// On enlève la bombe du dessin
-            stage.removeChild(this);
-        }
-    }
 	
 	// Faire rougir la bombe (signal de l'explosion imminente de la bombe
 	Bombe.prototype.RougirBombe = function () {
