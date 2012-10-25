@@ -1,3 +1,8 @@
+25/10/2012 - Pizzi
+	Déplacement de code (fonction tick() BLL --> BO )
+
+__________________________________
+
 24/10/2012 - Pizzi
 	Réecriture et mise en place de la classe bombe.js. Création de la classe bonus.js
 	Mise en place de la classe bonus.js. 
