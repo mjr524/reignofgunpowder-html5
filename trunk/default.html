@@ -129,11 +129,12 @@
 
         function tick() {
             fpsLabel.text = Math.round(createjs.Ticker.getMeasuredFPS()) + " fps";
-            Hero.tick();
+            //Hero.tick();
             Panneau.tick();
             /*for (var i = 0; i < tab_bombes.lesBombes.length; i++) {
                 tab_bombes.lesBombes[i].tick();
             }*/
+            tab_persos.tick();
             tab_bombes.tick();
 			for (var i = 0; i < tab_explosion.length; i++) {
                 tab_explosion[i].tick();
