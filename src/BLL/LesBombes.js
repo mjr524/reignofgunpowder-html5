@@ -3,11 +3,11 @@
 //
 //	Author : Jo 
 //	Dcreat : *
-//	Dmodif : 24/10/2012 23:30
+//	Dmodif : 25/10/2012 21:30
 //-----------------------------------------------------------------------------
 
-(function (window)
-{
+(function (window) {
+	
     //Instance de la classe
     LesBombes.instance = null;
     
@@ -78,5 +78,5 @@
         return this.nbr_bombes;
     }
 
-window.LesBombes = LesBombes;
+	window.LesBombes = LesBombes;
 }(window));
