@@ -16,15 +16,15 @@
         this.lesBombes = new Array();
         this.nbr_bombes = 0;
 
-        //Si on ne passe pas par getInstance pour r�cup�rer l'instance
+        //Si on ne passe pas par GetInstance pour r�cup�rer l'instance
         //On g�n�re une erreur
-        if (LesBombes.caller != LesBombes.getInstance) {
-            throw new Error("On ne peut pas instancier LesBombes, on doit la r�cup�rer par getInstance, c'est un singleton");
+        if (LesBombes.caller != LesBombes.GetInstance) {
+            throw new Error("On ne peut pas instancier LesBombes, on doit la r�cup�rer par GetInstance, c'est un singleton");
         }
     }
 
     //Pattern de singleton
-    LesBombes.getInstance = function () {
+    LesBombes.GetInstance = function () {
         if (LesBombes.instance == null) {
             LesBombes.instance = new LesBombes();
         }

@@ -1,13 +1,13 @@
 //LesPersos.js
 //Constructeur
 function LesPersos() {
-    this.lesPersos = new Array();
-	this.nbr_persos = 0;
+    this.tabLesPersos = new Array();
+	this.intNbrPersos = 0;
 	
-    //Si on ne passe pas par getInstance pour récupérer l'instance
-    //On génère une erreur
-    if (LesPersos.caller != LesPersos.getInstance) {
-        throw new Error("On ne peut pas instancier LesPersos, on doit la récupérer par getInstance, c'est un singleton");
+    //Si on ne passe pas par GetInstance pour rï¿½cupï¿½rer l'instance
+    //On gï¿½nï¿½re une erreur
+    if (LesPersos.caller != LesPersos.GetInstance) {
+        throw new Error("On ne peut pas instancier LesPersos, on doit la rï¿½cupï¿½rer par GetInstance, c'est un singleton");
     }
 }
 
@@ -15,7 +15,7 @@ function LesPersos() {
 LesPersos.instance = null;
 
 //Pattern de singleton
-LesPersos.getInstance = function () {
+LesPersos.GetInstance = function () {
     if (LesPersos.instance == null) {
         LesPersos.instance = new LesPersos();
     }
@@ -24,26 +24,26 @@ LesPersos.getInstance = function () {
 
 //Ajoute un perso dans la liste
 LesPersos.prototype.add = function (perso) {
-    this.lesPersos[this.getNbPersos()] = perso;
+    this.tabLesPersos[this.getNbPersos()] = perso;
     stage.addChild(perso);
-    this.nbr_persos += 1;
+    this.intNbrPersos += 1;
 }
 
 //Retourne la liste de persos
 LesPersos.prototype.get = function () {
-    return this.lesPersos;
+    return this.tabLesPersos;
 }
 
 //Supprime un perso par son index
 LesPersos.prototype.deleteAtIndex = function (index) {
-    this.lesPersos.splice(index, 1);
-	this.nbr_persos -= 1;
-	for (var i = index; i <= this.lesPersos.length - 1; i++) {
-		this.lesPersos[i].index--;
+    this.tabLesPersos.splice(index, 1);
+	this.intNbrPersos -= 1;
+	for (var i = index; i <= this.tabLesPersos.length - 1; i++) {
+		this.tabLesPersos[i].index--;
 	}
 }
 
 //Retourne le nombre de persos
 LesPersos.prototype.getNbPersos = function () {
-	return this.nbr_persos;
+	return this.intNbrPersos;
 }
