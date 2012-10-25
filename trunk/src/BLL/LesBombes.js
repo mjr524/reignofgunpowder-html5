@@ -46,20 +46,17 @@
     //Boucle sur toutes les bombes;
     LesBombes.prototype.tick = function () {
     	for (var i = 0; i <= this.lesBombes.length - 1; i++) {
-    		alert("1");
-            this.LesBombes[i].intTemps += 1;
+            this.lesBombes[i].intTemps += 1;
 			// -- On vérifie si la bombe doit rougir
-			alert("2");
-			if (this.LesBombes[i].intTemps == this.LesBombes[i].intTempsExplosion - (30)){   // Pour l'instant mis en brute il faudra trouver une solution pour que cela soit proportionnel au temps explosion
-				this.LesBombes[i].RougirBombe();
+			if (this.lesBombes[i].intTemps == this.lesBombes[i].intTempsExplosion - (30)){   // Pour l'instant mis en brute il faudra trouver une solution pour que cela soit proportionnel au temps explosion
+				this.lesBombes[i].RougirBombe();
 			}
 			// -- On vérifie si la bombe doit exploser
-	        if (this.LesBombes[i].intTemps >= this.LesBombes[i].intTempsExplosion) {
-	            tab_bombes.deleteAtIndex(this.LesBombes[i].intIndex);
+	        if (this.lesBombes[i].intTemps >= this.lesBombes[i].intTempsExplosion) {
+	            this.deleteAtIndex(this.lesBombes[i].intIndex);
 				// On enlève la bombe du dessin
-	            stage.removeChild(this.LesBombes[i]);
+	            stage.removeChild(this.lesBombes[i]);
 	        }
-	        alert("3");
         }
     }
 
