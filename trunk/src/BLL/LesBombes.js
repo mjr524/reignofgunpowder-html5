@@ -13,8 +13,8 @@
     
     //Constructeur
     function LesBombes() {
-        this.lesBombes = new Array();
-        this.nbr_bombes = 0;
+        this.tabLesBombes = new Array();
+        this.intNbrBombes = 0;
 
         //Si on ne passe pas par GetInstance pour r�cup�rer l'instance
         //On g�n�re une erreur
@@ -32,50 +32,50 @@
     }
 
     //Ajoute une bombe dans la liste
-    LesBombes.prototype.add = function (bombe) {
-        this.lesBombes[this.getNbBombes()] = bombe;
+    LesBombes.prototype.Add = function (bombe) {
+        this.tabLesBombes[this.GetNbBombes()] = bombe;
         stage.addChild(bombe);
-        this.nbr_bombes += 1;
+        this.intNbrBombes += 1;
     }
 
     //Retourne la liste de bombes
-    LesBombes.prototype.get = function () {
-        return this.lesBombes;
+    LesBombes.prototype.Get = function () {
+        return this.tabLesBombes;
     }
     
     //Boucle sur toutes les bombes;
     LesBombes.prototype.tick = function () {
-    	for (var i = 0; i <= this.lesBombes.length - 1; i++) {
-            this.lesBombes[i].intTemps += 1;
+    	for (var i = 0; i <= this.tabLesBombes.length - 1; i++) {
+            this.tabLesBombes[i].intTemps += 1;
 			// -- On vérifie si la bombe doit rougir
-			if (this.lesBombes[i].intTemps == this.lesBombes[i].intTempsExplosion - (30)){   // Pour l'instant mis en brute il faudra trouver une solution pour que cela soit proportionnel au temps explosion
-				this.lesBombes[i].RougirBombe();
+			if (this.tabLesBombes[i].intTemps == this.tabLesBombes[i].intTempsExplosion - (30)){   // Pour l'instant mis en brute il faudra trouver une solution pour que cela soit proportionnel au temps explosion
+				this.tabLesBombes[i].RougirBombe();
 			}
 			// -- On vérifie si la bombe doit exploser
-	        if (this.lesBombes[i].intTemps >= this.lesBombes[i].intTempsExplosion) {
-	            this.deleteAtIndex(this.lesBombes[i].intIndex);
+	        if (this.tabLesBombes[i].intTemps >= this.tabLesBombes[i].intTempsExplosion) {
+	            this.DeleteAtIndex(this.tabLesBombes[i].intIndex);
 	        }
         }
     }
 
     //Supprime une bombe par son index
-    LesBombes.prototype.deleteAtIndex = function (index) {
+    LesBombes.prototype.DeleteAtIndex = function (intIndex) {
     	// -- On crée l'explosion
-        CreerExplosion(new createjs.Point(this.lesBombes[index].x, this.lesBombes[index].y), 10);
+        CreerExplosion(new createjs.Point(this.tabLesBombes[intIndex].x, this.tabLesBombes[intIndex].y), 10);
         // -- On enlève la bombe du dessin
-        stage.removeChild(this.lesBombes[index]);
+        stage.removeChild(this.tabLesBombes[intIndex]);
         // -- On supprimr la bombe du tableau
-        this.lesBombes.splice(index, 1);
-        this.nbr_bombes -= 1;
+        this.tabLesBombes.splice(intIndex, 1);
+        this.intNbrBombes -= 1;
         // -- On remet les index pour les autres bombes
-        for (var i = index; i <= this.lesBombes.length - 1; i++) {
-            this.lesBombes[i].intIndex--;
+        for (var i = intIndex; i <= this.tabLesBombes.length - 1; i++) {
+            this.tabLesBombes[i].intIndex--;
         }
     }
 
     //Retourne le nombre de bombes
-    LesBombes.prototype.getNbBombes = function () {
-        return this.nbr_bombes;
+    LesBombes.prototype.GetNbBombes = function () {
+        return this.intNbrBombes;
     }
 
 	window.LesBombes = LesBombes;
