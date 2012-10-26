@@ -61,13 +61,11 @@
 		/* TODO : COMME LA TAILLE D'UNE CASE ET LA TAILLE DE LA MAP */
 
         //Les différents tableaux
-        //var tab_bombes = [];
         var tab_bombes = LesBombes.GetInstance();
 		var tab_persos = LesPersos.GetInstance();
 		var tab_explosion = [];
 
         //Compteurs
-        //var nbr_bombes = 0;
 		var nbr_flammes = 0;
 
 		//Images
@@ -129,11 +127,7 @@
 
         function tick() {
             fpsLabel.text = Math.round(createjs.Ticker.getMeasuredFPS()) + " fps";
-            //Hero.tick();
             Panneau.tick();
-            /*for (var i = 0; i < tab_bombes.lesBombes.length; i++) {
-                tab_bombes.lesBombes[i].tick();
-            }*/
             tab_persos.tick();
             tab_bombes.tick();
 			for (var i = 0; i < tab_explosion.length; i++) {
@@ -155,16 +149,7 @@
             }
         }
 
-        function handleKeyUp(e) {
-            //cross browser issues exist
-            /*if(!e){ var e = window.event; }
-            switch(e.keycode) {
-                case keycode_left:	hero.stop(); break;
-                case keycode_right: if(hero.x == nextx)adroite = true; break;
-                case keycode_up:	if(hero.y == nexty)enhaut = true; break;
-                case keycode_down:	if(hero.y == nexty)enbas = true; break;
-            }*/
-        }
+        function handleKeyUp(e) {}
 		
 		function SupprimerFlamme(index) {
 			tab_explosion.splice(index, 1);

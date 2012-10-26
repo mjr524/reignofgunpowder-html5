@@ -33,14 +33,14 @@
 	}
 
 	//Ajoute un perso dans la liste
-	LesPersos.prototype.add = function (perso) {
+	LesPersos.prototype.Add = function (perso) {
 	    this.tabLesPersos[this.getNbPersos()] = perso;
 	    stage.addChild(perso);
 	    this.intNbrPersos += 1;
 	}
 
 	//Retourne la liste de persos
-	LesPersos.prototype.get = function () {
+	LesPersos.prototype.Get = function () {
 	    return this.tabLesPersos;
 	}
 
@@ -71,7 +71,7 @@
 
 
 	//Supprime un perso par son index
-	LesPersos.prototype.deleteAtIndex = function (index) {
+	LesPersos.prototype.DeleteAtIndex = function (index) {
 	    this.tabLesPersos.splice(index, 1);
 		this.intNbrPersos -= 1;
 		for (var i = index; i <= this.tabLesPersos.length - 1; i++) {

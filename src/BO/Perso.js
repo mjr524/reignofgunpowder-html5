@@ -63,7 +63,7 @@
 		// -- Initialisation du recRectangle
 		this.recRectangle = new XNARectangle(this.x, this.y, this.intWidth, this.intHeight);
 		// -- On fini en ajoutant le perso au dessin
-		tab_persos.add(this);
+		tab_persos.Add(this);
 	}
 	
 	// Deplacement du personnage
@@ -114,19 +114,15 @@
 	Perso.prototype.PoserBombe = function(){
 		if (!this.bolEnDeplacement){
 			if (this.intDirection == 2){
-			    //tab_bombes[nbr_bombes] = new Bombe(bombe, new createjs.Point(this.x + 32,this.y + (this.intHeight-32)));
 			    new Bombe(bombe, bombeRouge,new createjs.Point(this.x + 32, this.y + (this.intHeight - 32)), 100);
 			}
 			else if(this.intDirection == 4){
-			    //tab_bombes[nbr_bombes] = new Bombe(bombe, new createjs.Point(this.x - 32,this.y + (this.intHeight-32)));
 			    new Bombe(bombe, bombeRouge, new createjs.Point(this.x - 32, this.y + (this.intHeight - 32)), 100);
 			}
 			else if(this.intDirection == 3){
-			    //tab_bombes[nbr_bombes] = new Bombe(bombe, new createjs.Point(this.x, this.y + 32 + (this.intHeight - 32)));
 			    new Bombe(bombe, bombeRouge,new createjs.Point(this.x, this.y + 32 + (this.intHeight - 32)), 100);
 			}
 			else if(this.intDirection == 1){
-			    //tab_bombes[nbr_bombes] = new Bombe(bombe, new createjs.Point(this.x, this.y - 32 + (this.intHeight - 32)));
 			    new Bombe(bombe, bombeRouge, new createjs.Point(this.x, this.y - 32 + (this.intHeight - 32)), 100);
 			}
 			

@@ -48,11 +48,11 @@
         this.intTemps = 0;
 		this.intTempsExplosion = intTempsExplosion;
 		// -- Initialisation de l'index de la bombe
-		this.intIndex = tab_bombes.getNbBombes();
+		this.intIndex = tab_bombes.GetNbBombes();
 		// -- Initialisation du rectange de la bombe
 		this.recRectangle = new XNARectangle(this.x, this.y, this.intWidth, this.intHeight);
 		// -- On fini en ajoutant la bombe sur le dessin
-		tab_bombes.add(this);
+		tab_bombes.Add(this);
     }
 	
 	// Faire rougir la bombe (signal de l'explosion imminente de la bombe
