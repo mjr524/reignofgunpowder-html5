@@ -3,7 +3,7 @@
 //
 //	Author : Pizzi 
 //	Dcreat : 23/10/2012
-//	Dmodif : 23/10/2012 22:00
+//	Dmodif : 27/10/2012 23:30
 //-----------------------------------------------------------------------------
 
 /// <summary>
@@ -47,43 +47,17 @@
 		this.y = ptnPosition.y;
 		this.intWidth = ptnTaille.x;
 		this.intHeight = ptnTaille.y;
-		this.index = nbr_flammes;
-		nbr_flammes ++;
 		// -- Initialisation des timers
 		this.intTemps = 0;
 		this.intTEMPS_FLAMME = 10;
+		// -- Initialisation de l'index de la bombe
+		this.intIndex = tab_flammes.GetNbFlammes();
 		// -- Initialisation du rectangle
 		this.recRectangle = new XNARectangle(this.x, this.y, this.intWidth, this.intHeight);
 		// -- On finit en ajoutant la flamme au dessin
-		this.AjouterFlamme();
+		tab_flammes.Add(this);
     }
 
-
-	// Boucle sur une flamme
-    Flamme.prototype.tick = function () {
-		this.intTemps += 1;
-        if (this.intTemps == this.intTEMPS_FLAMME) {
-            SupprimerFlamme(this.index);
-            stage.removeChild(this);
-        }
-		
-		if (this.GetRectangle().Intersects(Hero.GetRectangle()) != false)
-		{
-			//Le perso a �t� touch� par une flamme
-			stage.removeChild(Hero);
-		}
-		
-		if (this.GetRectangle().Intersects(Arbre.GetRectangle()) != false)
-		{
-			//Le perso a �t� touch� par une flamme
-			stage.removeChild(Arbre);
-		}
-    }
-	
-	// Ajoute la flamme au dessin
-	Flamme.prototype.AjouterFlamme = function () {
-		stage.addChild(this);
-	}
 	
 	// Retourne le rectangle de la flamme
 	Flamme.prototype.GetRectangle = function () {

@@ -47,6 +47,7 @@
     <!-- BLL -->
     <script src="src/BLL/LesBombes.js"></script>
     <script src="src/BLL/LesPersos.js"></script>
+    <script src="src/BLL/LesFlammes.js"></script>
 
     <!-- We also provide hosted minified versions of all CreateJS libraries.
 	  http://code.createjs.com -->
@@ -63,10 +64,7 @@
         //Les différents tableaux
         var tab_bombes = LesBombes.GetInstance();
 		var tab_persos = LesPersos.GetInstance();
-		var tab_explosion = [];
-
-        //Compteurs
-		var nbr_flammes = 0;
+		var tab_flammes = LesFlammes.GetInstance();
 
 		//Images
         var perso = new Image();
@@ -80,6 +78,7 @@
 		var Arbre = null;
 		var Panneau = null;
 
+		//Touches
         var KEYCODE_SPACE = 32;		//usefull keycode
         var KEYCODE_DOWN = 40;
         var KEYCODE_UP = 38;		//usefull keycode
@@ -130,9 +129,7 @@
             Panneau.tick();
             tab_persos.tick();
             tab_bombes.tick();
-			for (var i = 0; i < tab_explosion.length; i++) {
-                tab_explosion[i].tick();
-            }
+			tab_flammes.tick();
             stage.update();
         }
 
@@ -151,23 +148,15 @@
 
         function handleKeyUp(e) {}
 		
-		function SupprimerFlamme(index) {
-			tab_explosion.splice(index, 1);
-			nbr_flammes --;
-			for (var i = index; i <= tab_explosion.length - 1; i++) {
-				tab_explosion[i].index--;
-			}
-		}
-		
 		function CreerExplosion(position, puissance){
 			for (var i = puissance; i >= 0; i--) {
 				if(i==0)
-					tab_explosion[nbr_flammes] = new Flamme(explosion, new createjs.Point(position.x,position.y),new createjs.Point(32,32));
+					new Flamme(explosion, new createjs.Point(position.x,position.y),new createjs.Point(32,32));
 				else{
-					tab_explosion[nbr_flammes] = new Flamme(explosion, new createjs.Point(position.x + i*32,position.y),new createjs.Point(32,32));
-					tab_explosion[nbr_flammes] = new Flamme(explosion, new createjs.Point(position.x - i*32,position.y),new createjs.Point(32,32));
-					tab_explosion[nbr_flammes] = new Flamme(explosion, new createjs.Point(position.x,position.y + i*32),new createjs.Point(32,32));
-					tab_explosion[nbr_flammes] = new Flamme(explosion, new createjs.Point(position.x,position.y - i*32),new createjs.Point(32,32));
+					new Flamme(explosion, new createjs.Point(position.x + i*32,position.y),new createjs.Point(32,32));
+					new Flamme(explosion, new createjs.Point(position.x - i*32,position.y),new createjs.Point(32,32));
+					new Flamme(explosion, new createjs.Point(position.x,position.y + i*32),new createjs.Point(32,32));
+					new Flamme(explosion, new createjs.Point(position.x,position.y - i*32),new createjs.Point(32,32));
 				}	
 			}
 		}

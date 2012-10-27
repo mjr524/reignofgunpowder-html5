@@ -3,7 +3,7 @@
 //
 //	Author : Pizzi
 //	Dcreat : 27/10/2012 19:30
-//	Dmodif : 27/10/2012 21:30
+//	Dmodif : 27/10/2012 23:30
 //-----------------------------------------------------------------------------
 
 (function (window) {
@@ -33,7 +33,7 @@
 
 	//Ajoute une flamme dans le tableau
 	LesFlammes.prototype.Add = function(flamme) {
-		this.tabLesFlammes[this.getNbFlammes()] = flamme;
+		this.tabLesFlammes[this.GetNbFlammes()] = flamme;
 		stage.addChild(flamme);
 		this.intNbrFlammes += 1;	
 	}
@@ -45,20 +45,40 @@
 	
 	//Boucle sur toutes les flammes
 	LesFlammes.prototype.tick = function () {
-		
+		for (var i = 0; i <= this.tabLesFlammes.length - 1; i++) {
+			this.tabLesFlammes[i].intTemps += 1;
+	        if (this.tabLesFlammes[i].intTemps == this.tabLesFlammes[i].intTEMPS_FLAMME) {
+	            this.DeleteAtIndex(this.tabLesFlammes[i].intIndex);
+	        }
+			
+			if (this.tabLesFlammes[i].GetRectangle().Intersects(Hero.GetRectangle()) != false)
+			{
+				//Le perso a �t� touch� par une flamme
+				stage.removeChild(Hero);
+			}
+			
+			if (this.tabLesFlammes[i].GetRectangle().Intersects(Arbre.GetRectangle()) != false)
+			{
+				//Le perso a �t� touch� par une flamme
+				stage.removeChild(Arbre);
+			}
+		}
 	}
 	
 	//Supprimer une flamme par son index
-	LesFlammes.prototype.DeleteAtIndex = function (index) {
-		this.tabLesFlammes.splice(index, 1);
+	LesFlammes.prototype.DeleteAtIndex = function (intIndex) {
+		// -- On enlève la flamme du dessin
+		stage.removeChild(this.tabLesFlammes[intIndex]);
+		this.tabLesFlammes.splice(intIndex, 1);
 		this.intNbrFlammes -= 1;
-		for (var i = index; i <= this.tabLesFlammes.length - 1; i++) {
-			this.tabLesFlammes[i].index--;	
+		// -- On remet les index pour les autres flammes
+		for (var i = intIndex; i <= this.tabLesFlammes.length - 1; i++) {
+			this.tabLesFlammes[i].intIndex--;
 		}
 	}	
 	
 	//Retourne le nombre de flammes
-	LesFlammes.prototype.getNbFlammes = function () {
+	LesFlammes.prototype.GetNbFlammes = function () {
 		return this.intNbrFlammes;	
 	}
 
