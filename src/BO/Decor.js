@@ -12,6 +12,7 @@
 (function (window) {
 
     //Attributs de la classe Decor
+    this.intIndex; // Index du décor dans le tableau
 	this.bolIsColliseable; // Le décor peut-il créer une collison?
 	this.bolIsAnimated; // Le décor est-il animé?
 	this.recRectangle; // Le rectangle du décor
@@ -46,26 +47,19 @@
 		this.y = ptnPosition.y;
 		// -- Colliseable? 
 		this.bolIsColliseable = bolColliseable;
+		// -- Initialisation de l'index de la bombe
+		this.intIndex = tab_decors.GetNbDecors();
 		// -- Initialisation du rectangle
 		this.recRectangle = recCollision;
 		// -- On finit en ajoutant le décor au dessin
-		this.AjouterDecor();
+		tab_decors.Add(this);
     }
 
-	// Boucle sur un décor
-    Decor.prototype.tick = function () {
-		//Normalement pas besoin
-    }
     
     //Retourne le rectangle
     Decor.prototype.GetRectangle = function () {
     	return this.recRectangle;
     }
-	
-	// Ajout du décor au dessin
-	Decor.prototype.AjouterDecor = function () {
-		stage.addChild(this); // En attente de la classe lesdecors.js
-	}
 
     window.Decor = Decor;
 }(window));

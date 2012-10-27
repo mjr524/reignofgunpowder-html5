@@ -48,6 +48,8 @@
     <script src="src/BLL/LesBombes.js"></script>
     <script src="src/BLL/LesPersos.js"></script>
     <script src="src/BLL/LesFlammes.js"></script>
+    <script src="src/BLL/LesDecors.js"></script>
+
 
     <!-- We also provide hosted minified versions of all CreateJS libraries.
 	  http://code.createjs.com -->
@@ -65,6 +67,7 @@
         var tab_bombes = LesBombes.GetInstance();
 		var tab_persos = LesPersos.GetInstance();
 		var tab_flammes = LesFlammes.GetInstance();
+		var tab_decors = LesDecors.GetInstance();
 
 		//Images
         var perso = new Image();
@@ -101,7 +104,7 @@
             fpsLabel.x = 10;
             fpsLabel.y = 10;
 
-            //Test avec une animation
+            //Chargement des images
             perso.src = "images/perso.png";
             bombe.src = "images/bomb.png";
 			bombeRouge.src = "images/bomb2.png";
