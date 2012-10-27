@@ -28,7 +28,7 @@
 		if (LesFlammes.instance == null) {
 			LesFlammes.instance = new LesFlammes();
 		}
-		return LesFlammes.instance	
+		return LesFlammes.instance;	
 	}
 
 	//Ajoute une flamme dans le tableau
@@ -38,7 +38,7 @@
 		this.intNbrFlammes += 1;	
 	}
 	
-	//Returne la liste des flammes
+	//Retourne la liste des flammes
 	LesFlammes.prototype.Get = function () {
 		return this.tabLesFlammes;	
 	}
