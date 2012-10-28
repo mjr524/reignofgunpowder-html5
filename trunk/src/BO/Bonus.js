@@ -57,11 +57,11 @@
     
     // Boucle sur le bonus
     Bonus.prototype.tick = function () {
-    	this.intTemps += 1;
+    	/*this.intTemps += 1;
     	if (this.intTemps == this.intTEMPSAPPARITION){
     		//SupprimerBonus(this.index);  TODO 
     		stage.removeChild(this);
-    	}
+    	}*/
     }
     
     // Retourne le rectangle du bonus
