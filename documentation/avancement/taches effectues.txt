@@ -1,3 +1,8 @@
+28/10/2012 - Pizzi
+	Création de la classe lesBonus et sa mise en place. 
+
+__________________________________
+
 27/10/2012 - Pizzi
 	Création de la classe lesFlammes. Mise en place des flammes. 
 	Création de la classe lesDecors.Mise en place de cette classe. 

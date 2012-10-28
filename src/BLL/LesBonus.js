@@ -43,6 +43,16 @@
 		return this.tabLesBonus;
 	}
 	
+	//Boucle sur tous les bonus
+	LesBonus.prototype.tick = function () {
+		for (var i = 0; i <= this.tabLesBonus.length - 1; i++) {
+			this.tabLesBonus[i].intTemps += 1;
+	    	if (this.tabLesBonus[i].intTemps == this.tabLesBonus[i].intTEMPSAPPARITION){
+	    		this.DeleteAtIndex(this.tabLesBonus[i].intIndex);
+	    	}
+		}
+	}
+	
 	//Supprimer un bonus par son index
 	LesBonus.prototype.DeleteAtIndex = function (intIndex) {
 		// -- On enlève le bonus du dessin
