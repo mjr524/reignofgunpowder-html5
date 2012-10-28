@@ -44,14 +44,15 @@
     	// -- Position, index et dimension du bonus
     	this.x = ptnPosition.x;
     	this.y = ptnPosition.y;
-    	this.index = 0; // TODO -> A compléter
     	// -- Initialisation des timers
     	this.intTemps = 0;
     	this.intTEMPSAPPARITION = 30;
+    	// -- Initialisation de l'index de la bombe
+    	this.intIndex = tab_bonus.GetNbBonus();
     	// -- Initialisation du rectangle
     	this.recRectangle = new XNARectangle(this.x, this.y, ptnTaille.x, ptnTaille.y);
     	// -- On finit en ajoutant le bonus au dessin
-    	this.AjouterBonus();
+    	tab_bonus.Add(this);
     }
     
     // Boucle sur le bonus
@@ -61,11 +62,6 @@
     		//SupprimerBonus(this.index);  TODO 
     		stage.removeChild(this);
     	}
-    }
-    
-    // Ajoute le bonus au dessin
-    Bonus.prototype.AjouterBonus = function () {
-    	stage.addChild(this);
     }
     
     // Retourne le rectangle du bonus
