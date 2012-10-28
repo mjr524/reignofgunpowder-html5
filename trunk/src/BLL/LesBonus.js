@@ -13,12 +13,12 @@
 	
 	//Constructeur
 	function LesBonus() {
-		this.tabLesbonus = new Array();
+		this.tabLesBonus = new Array();
 		this.intNbrBonus = 0;
 		
 		//Si on ne passe pas GetInstance pour récupérer l'instance
 		// On génére une ereur
-		if (LesBonus.call != LesBonus.GetInstance) {
+		if (LesBonus.caller != LesBonus.GetInstance) {
 			throw new Error("On ne peut pas instancier LesBonus, on doit récupérer par GetInstance, c'est un Singleton");
 		}
 	}
@@ -26,7 +26,7 @@
 	//Pattern de Singleton
 	LesBonus.GetInstance = function () {
 		if (LesBonus.instance == null) {
-			LesBonus.instance = new Lesbonus();
+			LesBonus.instance = new LesBonus();
 		}
 		return LesBonus.instance;
 	}
