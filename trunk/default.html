@@ -63,7 +63,7 @@
         var map;
 		
 		//Les constantes
-		/* TODO : COMME LA TAILLE D'UNE CASE ET LA TAILLE DE LA MAP */
+		
 
         //Les différents tableaux
         var tab_bombes = LesBombes.GetInstance();
@@ -124,6 +124,8 @@
             createjs.Ticker.addListener(window);
             createjs.Ticker.useRAF = true;
             createjs.Ticker.setFPS(60);
+            
+            Charger();
 			
 			Hero = new Perso(perso, new createjs.Point( 400, 200), new createjs.Point( 32, 48));
 			Arbre = new Decor(arbre, new createjs.Point(200,200), new createjs.Point(100,150), new XNARectangle(210,270,25,25), true, false);
@@ -165,6 +167,22 @@
 					new Flamme(explosion, new createjs.Point(position.x,position.y - i*32),new createjs.Point(32,32));
 				}	
 			}
+		}
+		
+		function Charger(){
+			var req = new XMLHttpRequest();
+			req.open("GET", "fichier.json", true);
+			req.onreadystatechange = monCode(req);   // la fonction de prise en charge
+			req.send(null); 
+		}
+		
+		function monCode(req) 
+		{ 
+			alert(req.readyState);
+		   if (req.readyState == 4) 
+		   { 
+		        alert(eval('(' + req.responseText + ')')); 
+		   }
 		}
 
 	</script>
