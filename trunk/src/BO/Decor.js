@@ -15,6 +15,7 @@
     this.intIndex; // Index du décor dans le tableau
 	this.bolIsColliseable; // Le décor peut-il créer une collison?
 	this.bolIsAnimated; // Le décor est-il animé?
+	this.bolIsBreakable; // Le décor est-il cassable
 	this.recRectangle; // Le rectangle du décor
 
     function Decor(imgDecor, ptnPosition, taille, recCollision, bolColliseable, bolAnimated) {
