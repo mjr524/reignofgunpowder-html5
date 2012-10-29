@@ -61,7 +61,7 @@
     //Supprime une bombe par son index
     LesBombes.prototype.DeleteAtIndex = function (intIndex) {
     	// -- On crée l'explosion
-        CreerExplosion(new createjs.Point(this.tabLesBombes[intIndex].x, this.tabLesBombes[intIndex].y), 10);
+        CreerExplosion(new createjs.Point(this.tabLesBombes[intIndex].x, this.tabLesBombes[intIndex].y), 2);
         // -- On enlève la bombe du dessin
         stage.removeChild(this.tabLesBombes[intIndex]);
         // -- On supprimr la bombe du tableau
