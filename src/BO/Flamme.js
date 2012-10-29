@@ -59,7 +59,7 @@
 		this.recRectangle = new XNARectangle(this.x, this.y, this.intWidth, this.intHeight);
 		// -- On finit en ajoutant la flamme au dessin
 		tab_flammes.Add(this);
-		// -- On joue l'anim 
+		// -- On joue l'animation
 		this.gotoAndPlay("explose");
     }
 
