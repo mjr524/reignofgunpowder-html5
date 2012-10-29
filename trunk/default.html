@@ -114,6 +114,7 @@
 			explosion.src = "images/explosion.png";
 			arbre.src = "images/stump.png"; 
 			panneau.src = "images/panneau.png";
+			explosion_sprite = "images/Sprite_explosion2.png";
 
             // On lance la séquence d’animation
             stage.addChild(map);
@@ -159,12 +160,12 @@
 		function CreerExplosion(position, puissance){
 			for (var i = puissance; i >= 0; i--) {
 				if(i==0)
-					new Flamme(explosion, new createjs.Point(position.x,position.y),new createjs.Point(32,32));
+					new Flamme(explosion_sprite, new createjs.Point(position.x,position.y),new createjs.Point(50,75));
 				else{
-					new Flamme(explosion, new createjs.Point(position.x + i*32,position.y),new createjs.Point(32,32));
-					new Flamme(explosion, new createjs.Point(position.x - i*32,position.y),new createjs.Point(32,32));
-					new Flamme(explosion, new createjs.Point(position.x,position.y + i*32),new createjs.Point(32,32));
-					new Flamme(explosion, new createjs.Point(position.x,position.y - i*32),new createjs.Point(32,32));
+					new Flamme(explosion_sprite, new createjs.Point(position.x + i*50,position.y),new createjs.Point(50,75));
+					new Flamme(explosion_sprite, new createjs.Point(position.x - i*50,position.y),new createjs.Point(50,75));
+					new Flamme(explosion_sprite, new createjs.Point(position.x,position.y + i*50),new createjs.Point(50,75));
+					new Flamme(explosion_sprite, new createjs.Point(position.x,position.y - i*50),new createjs.Point(50,75));
 				}	
 			}
 		}
@@ -178,7 +179,7 @@
 		
 		function monCode(req) 
 		{ 
-			alert(req.readyState);
+			//alert(req.readyState);
 		   if (req.readyState == 4) 
 		   { 
 		        alert(eval('(' + req.responseText + ')')); 
