@@ -114,7 +114,7 @@
 			explosion.src = "images/explosion.png";
 			arbre.src = "images/stump.png"; 
 			panneau.src = "images/panneau.png";
-			explosion_sprite = "images/Sprite_explosion3.png";
+			explosion_sprite = "images/Sprite_explosion.png";
 			bombe_sprite = "images/Sprite_bombe.png";
 
             // On lance la séquence d’animation
@@ -127,7 +127,11 @@
             createjs.Ticker.useRAF = true;
             createjs.Ticker.setFPS(60);
             
-            Charger();
+            var req = new XMLHttpRequest();
+            req.open("GET", "fichier.json", true);
+			req.onreadystatechange = monCode;   // la fonction de prise en charge
+			req.send(null);
+
 			
 			Hero = new Perso(perso, new createjs.Point( 400, 200), new createjs.Point( 32, 48));
 			Arbre = new Decor(arbre, new createjs.Point(200,200), new createjs.Point(100,150), new XNARectangle(210,270,25,25), true, false);
@@ -172,19 +176,18 @@
 		}
 		
 		function Charger(){
-			var req = new XMLHttpRequest();
 			req.open("GET", "fichier.json", true);
-			req.onreadystatechange = monCode(req);   // la fonction de prise en charge
-			req.send(null); 
+			req.onreadystatechange = monCode;   // la fonction de prise en charge
+			req.send(null);
 		}
 		
-		function monCode(req) 
+		function monCode() 
 		{ 
 			//alert(req.readyState);
-		   if (req.readyState == 4) 
+		   if (req.readyState == 1) 
 		   { 
 		         var doc = eval('(' + req.responseText + ')'); 
-		         alert(doc);
+		         //alert(doc);
 		   }
 		}
 
