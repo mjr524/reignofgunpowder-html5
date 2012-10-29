@@ -47,10 +47,6 @@
     LesBombes.prototype.tick = function () {
     	for (var i = 0; i <= this.tabLesBombes.length - 1; i++) {
             this.tabLesBombes[i].intTemps += 1;
-			// -- On vérifie si la bombe doit rougir
-			if (this.tabLesBombes[i].intTemps == this.tabLesBombes[i].intTempsExplosion - (30)){   // Pour l'instant mis en brute il faudra trouver une solution pour que cela soit proportionnel au temps explosion
-				this.tabLesBombes[i].RougirBombe();
-			}
 			// -- On vérifie si la bombe doit exploser
 	        if (this.tabLesBombes[i].intTemps >= this.tabLesBombes[i].intTempsExplosion) {
 	            this.DeleteAtIndex(this.tabLesBombes[i].intIndex);
@@ -61,7 +57,7 @@
     //Supprime une bombe par son index
     LesBombes.prototype.DeleteAtIndex = function (intIndex) {
     	// -- On crée l'explosion
-        CreerExplosion(new createjs.Point(this.tabLesBombes[intIndex].x, this.tabLesBombes[intIndex].y), 2);
+        CreerExplosion(new createjs.Point(this.tabLesBombes[intIndex].x, this.tabLesBombes[intIndex].y), 6);
         // -- On enlève la bombe du dessin
         stage.removeChild(this.tabLesBombes[intIndex]);
         // -- On supprimr la bombe du tableau

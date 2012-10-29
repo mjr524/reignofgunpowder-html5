@@ -114,7 +114,8 @@
 			explosion.src = "images/explosion.png";
 			arbre.src = "images/stump.png"; 
 			panneau.src = "images/panneau.png";
-			explosion_sprite = "images/Sprite_explosion2.png";
+			explosion_sprite = "images/Sprite_explosion3.png";
+			bombe_sprite = "images/Sprite_bombe.png";
 
             // On lance la séquence d’animation
             stage.addChild(map);
@@ -162,10 +163,10 @@
 				if(i==0)
 					new Flamme(explosion_sprite, new createjs.Point(position.x,position.y),new createjs.Point(50,75));
 				else{
-					new Flamme(explosion_sprite, new createjs.Point(position.x + i*50,position.y),new createjs.Point(50,75));
-					new Flamme(explosion_sprite, new createjs.Point(position.x - i*50,position.y),new createjs.Point(50,75));
-					new Flamme(explosion_sprite, new createjs.Point(position.x,position.y + i*50),new createjs.Point(50,75));
-					new Flamme(explosion_sprite, new createjs.Point(position.x,position.y - i*50),new createjs.Point(50,75));
+					new Flamme(explosion_sprite, new createjs.Point(position.x + i*30,position.y),new createjs.Point(50,75));
+					new Flamme(explosion_sprite, new createjs.Point(position.x - i*30,position.y),new createjs.Point(50,75));
+					new Flamme(explosion_sprite, new createjs.Point(position.x,position.y + i*30),new createjs.Point(50,75));
+					new Flamme(explosion_sprite, new createjs.Point(position.x,position.y - i*30),new createjs.Point(50,75));
 				}	
 			}
 		}
@@ -182,7 +183,8 @@
 			//alert(req.readyState);
 		   if (req.readyState == 4) 
 		   { 
-		        alert(eval('(' + req.responseText + ')')); 
+		         var doc = eval('(' + req.responseText + ')'); 
+		         alert(doc);
 		   }
 		}
 
