@@ -1,0 +1,5 @@
+======== ** Map ** ===========
+taille du jeu = 1000 * 500
+taille d'une case = 50 * 50
+Nbr de case longueur = 20
+Nbr de case hauteur = 10
