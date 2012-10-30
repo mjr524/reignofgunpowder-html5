@@ -15,10 +15,13 @@
     this.tabDecorMap;
     // -- Les constantes
     this.INTNBRCASELARGEUR = 20;
+    this.INTNBRCASEHAUTEUR = 10;
+    this.TAILLECASE = 50;
 
 
     function Bombe(strMap) {
         ChargerMap(strMap);
+        MettreDecor;
     }
 
 	Map.prototype.ChargerMap = function(strMap){
@@ -34,6 +37,10 @@
 		else{
 			alert("Impossible de charger la map " + strHxr + "...");
 		}
+   }
+   
+   Map.prototype.MettreDecor = function(){
+   		// --> TODO =================
    }
 
     window.Map = Map;
