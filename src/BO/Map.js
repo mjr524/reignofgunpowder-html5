@@ -1,37 +1,40 @@
 //-----------------------------------------------------------------------------
-// Perso.js			:  Classe basique pour un perso
+// Map.js			:  Classe basique pour une map
 //
 //	Author : Pizzi 
-//	Dcreat : 22/10/2012
-//	Dmodif : 22/10/2012 22:30
+//	Dcreat : 30/10/2012
+//	Dmodif : 30/10/2012 23:00
 //-----------------------------------------------------------------------------
 /// <summary>
 /// Une Simple Bombe
 /// </summary>
 (function (window) {
 
-    //Attributs de la classe Bombe
+    //Attributs de la classe Map
+    this.strXhr = new XMLHttpRequest();
+    this.tabDecorMap;
+    // -- Les constantes
+    this.INTNBRCASELARGEUR = 20;
 
 
-    function Bombe(imgBombe) {
-        this.initialize(imgBombe);
+    function Bombe(strMap) {
+        ChargerMap(strMap);
     }
 
-    // Using EaselJS BitmapSequence as the based prototype
-    Bombe.prototype = new createjs.BitmapAnimation();
+	Map.prototype.ChargerMap = function(strMap){
+    	xhr.onreadystatechange = TraiterDonnees;
+		xhr.open("GET", strMap, true);
+		xhr.send(null);
+   }
+   
+   Map.prototype.TraiterDonnees = function(){
+   		if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
+			var tabDecorMap = eval('(' + xhr.responseText + ')');
+		}
+		else{
+			alert("Impossible de charger la map " + strHxr + "...");
+		}
+   }
 
-    // constructor:
-    //unique to avoid overiding base class
-    Bombe.prototype.BitmapAnimation_initialize = Bombe.prototype.initialize;
-
-    Bombe.prototype.initialize = function (imgBombe) {
-
-    }
-
-
-    Bombe.prototype.tick = function () {
-
-    }
-
-    window.Bombe = Bombe;
+    window.Map = Map;
 }(window));

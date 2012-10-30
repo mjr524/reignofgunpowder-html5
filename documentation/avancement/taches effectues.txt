@@ -1,3 +1,9 @@
+30/10/2012 - Pizzi
+	Création de la classe Map, pour le chargement des décors. 
+	Mise en place des explosions avec aléatoires. 
+
+__________________________________
+
 28/10/2012 - Pizzi
 	Création de la classe lesBonus et sa mise en place. 
 
