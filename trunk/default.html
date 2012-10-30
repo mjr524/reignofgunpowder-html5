@@ -90,6 +90,9 @@
         var KEYCODE_UP = 38;		//usefull keycode
         var KEYCODE_LEFT = 37;		//usefull keycode
         var KEYCODE_RIGHT = 39;		//usefull keycode
+        
+        //LECTEUR JSON
+        var xhr = new XMLHttpRequest();
 
         //register key functions
         document.onkeydown = handleKeyDown;
@@ -115,6 +118,8 @@
 			arbre.src = "images/stump.png"; 
 			panneau.src = "images/panneau.png";
 			explosion_sprite = "images/Sprite_explosion.png";
+			explosion_sprite2 = "images/Sprite_explosion2.png";
+			explosion_sprite3 = "images/Sprite_explosion3.png";
 			bombe_sprite = "images/Sprite_bombe.png";
 
             // On lance la séquence d’animation
@@ -127,11 +132,7 @@
             createjs.Ticker.useRAF = true;
             createjs.Ticker.setFPS(60);
             
-            var req = new XMLHttpRequest();
-            req.open("GET", "fichier.json", true);
-			req.onreadystatechange = monCode;   // la fonction de prise en charge
-			req.send(null);
-
+            //Charger();
 			
 			Hero = new Perso(perso, new createjs.Point( 400, 200), new createjs.Point( 32, 48));
 			Arbre = new Decor(arbre, new createjs.Point(200,200), new createjs.Point(100,150), new XNARectangle(210,270,25,25), true, false);
@@ -143,7 +144,7 @@
             tab_bonus.tick();
             tab_persos.tick();
             tab_bombes.tick();
-			tab_flammes.tick();
+			//tab_flammes.tick();
             stage.update();
         }
 
@@ -163,32 +164,59 @@
         function handleKeyUp(e) {}
 		
 		function CreerExplosion(position, puissance){
+			var image = null;
+			var random = Math.floor((Math.random()*3)+1);
+			if (random == 1){image = explosion_sprite;}
+			else if(random == 2){image = explosion_sprite2;}
+			else{ image = explosion_sprite3;}
+			// ---> TODO : Faire la même méthode random, légèreté du code
+			
 			for (var i = puissance; i >= 0; i--) {
 				if(i==0)
-					new Flamme(explosion_sprite, new createjs.Point(position.x,position.y),new createjs.Point(50,75));
+				{
+					random = Math.floor((Math.random()*3)+1);
+					if (random == 1){image = explosion_sprite;}
+					else if(random == 2){image = explosion_sprite2;}
+					else{ image = explosion_sprite3;}
+					new Flamme(image, new createjs.Point(position.x,position.y),new createjs.Point(50,75));
+				}
 				else{
-					new Flamme(explosion_sprite, new createjs.Point(position.x + i*30,position.y),new createjs.Point(50,75));
-					new Flamme(explosion_sprite, new createjs.Point(position.x - i*30,position.y),new createjs.Point(50,75));
-					new Flamme(explosion_sprite, new createjs.Point(position.x,position.y + i*30),new createjs.Point(50,75));
-					new Flamme(explosion_sprite, new createjs.Point(position.x,position.y - i*30),new createjs.Point(50,75));
+					random = Math.floor((Math.random()*3)+1);
+					if (random == 1){image = explosion_sprite;}
+					else if(random == 2){image = explosion_sprite2;}
+					else{ image = explosion_sprite3;}
+					new Flamme(image, new createjs.Point(position.x + i*30,position.y),new createjs.Point(50,75));
+					random = Math.floor((Math.random()*3)+1);
+					if (random == 1){image = explosion_sprite;}
+					else if(random == 2){image = explosion_sprite2;}
+					else{ image = explosion_sprite3;}
+					new Flamme(image, new createjs.Point(position.x - i*30,position.y),new createjs.Point(50,75));
+					random = Math.floor((Math.random()*3)+1);
+					if (random == 1){image = explosion_sprite;}
+					else if(random == 2){image = explosion_sprite2;}
+					else{ image = explosion_sprite3;}
+					new Flamme(image, new createjs.Point(position.x,position.y + i*30),new createjs.Point(50,75));
+					random = Math.floor((Math.random()*3)+1);
+					if (random == 1){image = explosion_sprite;}
+					else if(random == 2){image = explosion_sprite2;}
+					else{ image = explosion_sprite3;}
+					new Flamme(image, new createjs.Point(position.x,position.y - i*30),new createjs.Point(50,75));
 				}	
 			}
 		}
 		
 		function Charger(){
-			req.open("GET", "fichier.json", true);
-			req.onreadystatechange = monCode;   // la fonction de prise en charge
-			req.send(null);
+			xhr.onreadystatechange = MonCode;
+			xhr.open("GET", "fichier.json", true);
+			xhr.send(null);
 		}
 		
-		function monCode() 
-		{ 
-			//alert(req.readyState);
-		   if (req.readyState == 1) 
-		   { 
-		         var doc = eval('(' + req.responseText + ')'); 
-		         //alert(doc);
-		   }
+		function MonCode(){
+			if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
+					var doc = eval('(' + xhr.responseText + ')');
+					alert(doc.commands[0].value);
+					alert(doc.commands[1].value);
+			}
 		}
 
 	</script>

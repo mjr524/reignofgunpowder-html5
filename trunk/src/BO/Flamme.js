@@ -60,7 +60,7 @@
 		// -- On finit en ajoutant la flamme au dessin
 		tab_flammes.Add(this);
 		// -- On joue l'animation
-		this.gotoAndPlay("explose");
+		//this.gotoAndPlay("explose");
     }
 
 	
