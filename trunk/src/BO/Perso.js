@@ -63,7 +63,7 @@
 		// -- Initialisation du recRectangle
 		this.recRectangle = new XNARectangle(this.x, this.y, this.intWidth, this.intHeight);
 		// -- On fini en ajoutant le perso au dessin
-		tab_persos.Add(this);
+		tabLesPersos.Add(this);
 	}
 	
 	// Deplacement du personnage
@@ -114,16 +114,16 @@
 	Perso.prototype.PoserBombe = function(){
 		if (!this.bolEnDeplacement){
 			if (this.intDirection == 2){
-			    new Bombe(bombe_sprite,new createjs.Point(this.x + 50, this.y + (this.intHeight - 50)), new createjs.Point(50,50), 100);
+			    new Bombe(sprBombe,new createjs.Point(this.x + 50, this.y + (this.intHeight - 50)), new createjs.Point(50,50), 100);
 			}
 			else if(this.intDirection == 4){
-			    new Bombe(bombe_sprite, new createjs.Point(this.x - 50, this.y + (this.intHeight - 50)), new createjs.Point(50,50), 100);
+			    new Bombe(sprBombe, new createjs.Point(this.x - 50, this.y + (this.intHeight - 50)), new createjs.Point(50,50), 100);
 			}
 			else if(this.intDirection == 3){
-			    new Bombe(bombe_sprite,new createjs.Point(this.x, this.y + 50 + (this.intHeight - 50)), new createjs.Point(50,50), 100);
+			    new Bombe(sprBombe,new createjs.Point(this.x, this.y + 50 + (this.intHeight - 50)), new createjs.Point(50,50), 100);
 			}
 			else if(this.intDirection == 1){
-			    new Bombe(bombe_sprite, new createjs.Point(this.x, this.y - 50 + (this.intHeight - 50)), new createjs.Point(50,50), 100);
+			    new Bombe(sprBombe, new createjs.Point(this.x, this.y - 50 + (this.intHeight - 50)), new createjs.Point(50,50), 100);
 			}
 			
 			stage.addChild(this);
