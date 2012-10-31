@@ -49,11 +49,11 @@
 		// -- Colliseable? 
 		this.bolIsColliseable = bolColliseable;
 		// -- Initialisation de l'index de la bombe
-		this.intIndex = tab_decors.GetNbDecors();
+		this.intIndex = tabLesDecors.GetNbDecors();
 		// -- Initialisation du rectangle
 		this.recRectangle = recCollision;
 		// -- On finit en ajoutant le décor au dessin
-		tab_decors.Add(this);
+		tabLesDecors.Add(this);
     }
 
     

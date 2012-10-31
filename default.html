@@ -61,36 +61,36 @@
         var canvas;
         var stage;
         var fpsLabel;
-        var map;
+        var imgMap;
 		
 		//Les constantes
 		
 
         //Les différents tableaux
-        var tab_bombes = LesBombes.GetInstance();
-		var tab_persos = LesPersos.GetInstance();
-		var tab_flammes = LesFlammes.GetInstance();
-		var tab_decors = LesDecors.GetInstance();
-		var tab_bonus = LesBonus.GetInstance();
+		var tabLesBombes = LesBombes.GetInstance()
+		var tabLesPersos = LesPersos.GetInstance();
+		var tabLesFlammes = LesFlammes.GetInstance();
+		var tabLesDecors = LesDecors.GetInstance();
+		var tabLesBonus = LesBonus.GetInstance();
 
 		//Images
-        var perso = new Image();
-        var bombe = new Image();
-		var bombeRouge = new Image();
-		var explosion = new Image();
-		var arbre = new Image();
-		var panneau = new Image();
-        var Hero = null;
-        var Bebom = null;
-		var Arbre = null;
-		var Panneau = null;
+        var imgPerso = new Image();
+        var imgBombe = new Image();
+		var imgBombeRouge = new Image();
+		var imgExplosion = new Image();
+		var imgArbre = new Image();
+		var imgPanneau = new Image();
+        var prsHero = null;
+        var bmbBombe = null;
+		var decArbre = null;
+		var bnsPanneau = null;
 
 		//Touches
-        var KEYCODE_SPACE = 32;		//usefull keycode
-        var KEYCODE_DOWN = 40;
-        var KEYCODE_UP = 38;		//usefull keycode
-        var KEYCODE_LEFT = 37;		//usefull keycode
-        var KEYCODE_RIGHT = 39;		//usefull keycode
+        var KEYCODE_SPACE = 32;		//Touche espace
+        var KEYCODE_DOWN = 40;		//Touche bas
+        var KEYCODE_UP = 38;		//Touche haut
+        var KEYCODE_LEFT = 37;		//Touche gauche
+        var KEYCODE_RIGHT = 39;		//Touche droit
         
         //LECTEUR JSON
         var xhr = new XMLHttpRequest();
@@ -105,26 +105,26 @@
             height = canvas.height;
             stage = new createjs.Stage(canvas);
 
-            map = new createjs.Bitmap("images/background.jpg");
+            imgMap = new createjs.Bitmap("images/background.jpg");
 
             fpsLabel = new createjs.Text("-- fps", "bold 14px Arial", "#000");
             fpsLabel.x = 10;
             fpsLabel.y = 10;
 
             //Chargement des images
-            perso.src = "images/perso.png";
-            bombe.src = "images/bomb.png";
-			bombeRouge.src = "images/bomb2.png";
-			explosion.src = "images/explosion.png";
-			arbre.src = "images/stump.png"; 
-			panneau.src = "images/panneau.png";
-			explosion_sprite = "images/Sprite_explosion.png";
-			explosion_sprite2 = "images/Sprite_explosion2.png";
-			explosion_sprite3 = "images/Sprite_explosion3.png";
-			bombe_sprite = "images/Sprite_bombe.png";
+            imgPerso.src = "images/perso.png";
+            imgBombe.src = "images/bomb.png";
+			imgBombeRouge.src = "images/bomb2.png";
+			imgExplosion.src = "images/explosion.png";
+			imgArbre.src = "images/stump.png"; 
+			imgPanneau.src = "images/panneau.png";
+			sprExplosion1 = "images/Sprite_explosion.png";
+			sprExplosion2 = "images/Sprite_explosion2.png";
+			sprExplosion3 = "images/Sprite_explosion3.png";
+			sprBombe = "images/Sprite_bombe.png";
 
             // On lance la séquence d’animation
-            stage.addChild(map);
+            stage.addChild(imgMap);
             stage.addChild(fpsLabel);			
             stage.update();
 
@@ -135,77 +135,81 @@
             
             //Charger();
 			
-			Hero = new Perso(perso, new createjs.Point( 400, 200), new createjs.Point( 32, 48));
-			Arbre = new Decor(arbre, new createjs.Point(200,200), new createjs.Point(100,150), new XNARectangle(210,270,25,25), true, false);
-			Panneau = new Bonus(panneau, new createjs.Point(400,400),new createjs.Point(32,32),new XNARectangle(400,400,32,32));
+			prsHero = new Perso(imgPerso, new createjs.Point( 400, 200), new createjs.Point( 32, 48));
+			decArbre = new Decor(imgArbre, new createjs.Point(200,200), new createjs.Point(100,150), new XNARectangle(210,270,25,25), true, false);
+			bnsPanneau = new Bonus(imgPanneau, new createjs.Point(400,400),new createjs.Point(32,32),new XNARectangle(400,400,32,32));
         }
 
         function tick() {
             fpsLabel.text = Math.round(createjs.Ticker.getMeasuredFPS()) + " fps";
-            tab_bonus.tick();
-            tab_persos.tick();
-            tab_bombes.tick();
-			tab_flammes.tick();
+            tabLesBonus.tick();
+			tabLesPersos.tick();
+            tabLesBombes.tick();
+			tabLesFlammes.tick();
             stage.update();
         }
 
+		//Evènement sur les touches du clavier
         function handleKeyDown(e) {
             //cross browser issues exist
             if (!e) { var e = window.event; }
+            //Annule l'évènement en cours
             e.preventDefault();
             switch (e.keyCode) {
-                case KEYCODE_LEFT: Hero.Deplacer(4); break;
-                case KEYCODE_RIGHT: Hero.Deplacer(2); break;
-                case KEYCODE_UP: Hero.Deplacer(1); break;
-                case KEYCODE_DOWN: Hero.Deplacer(3); break;
-                case KEYCODE_SPACE: Hero.PoserBombe(); break;
+                case KEYCODE_LEFT: prsHero.Deplacer(4); break;
+                case KEYCODE_RIGHT: prsHero.Deplacer(2); break;
+                case KEYCODE_UP: prsHero.Deplacer(1); break;
+                case KEYCODE_DOWN: prsHero.Deplacer(3); break;
+                case KEYCODE_SPACE: prsHero.PoserBombe(); break;
             }
         }
 
         function handleKeyUp(e) {}
 		
+		//Crée une explosion à une position et à une puissance donnée
 		function CreerExplosion(position, puissance){
 			var image = null;
 			var random = Math.floor((Math.random()*3)+1);
-			if (random == 1){image = explosion_sprite;}
-			else if(random == 2){image = explosion_sprite2;}
-			else{ image = explosion_sprite3;}
+			if (random == 1){image = sprExplosion1;}
+			else if(random == 2){image = sprExplosion2;}
+			else{ image = sprExplosion3;}
 			// ---> TODO : Faire la même méthode random, légèreté du code
 			//------------------------------------------------------------------------------
 			for (var i = puissance; i >= 0; i--) {
 				if(i==0)
 				{
 					random = Math.floor((Math.random()*3)+1);
-					if (random == 1){image = explosion_sprite;}
-					else if(random == 2){image = explosion_sprite2;}
-					else{ image = explosion_sprite3;}
+					if (random == 1){image = sprExplosion1;}
+					else if(random == 2){image = sprExplosion2;}
+					else{ image = sprExplosion3;}
 					new Flamme(image, new createjs.Point(position.x,position.y),new createjs.Point(50,75));
 				}
 				else{
 					random = Math.floor((Math.random()*3)+1);
-					if (random == 1){image = explosion_sprite;}
-					else if(random == 2){image = explosion_sprite2;}
-					else{ image = explosion_sprite3;}
+					if (random == 1){image = sprExplosion1;}
+					else if(random == 2){image = sprExplosion2;}
+					else{ image = sprExplosion3;}
 					new Flamme(image, new createjs.Point(position.x + i*30,position.y),new createjs.Point(50,75));
 					random = Math.floor((Math.random()*3)+1);
-					if (random == 1){image = explosion_sprite;}
-					else if(random == 2){image = explosion_sprite2;}
-					else{ image = explosion_sprite3;}
+					if (random == 1){image = sprExplosion1;}
+					else if(random == 2){image = sprExplosion2;}
+					else{ image = sprExplosion3;}
 					new Flamme(image, new createjs.Point(position.x - i*30,position.y),new createjs.Point(50,75));
 					random = Math.floor((Math.random()*3)+1);
-					if (random == 1){image = explosion_sprite;}
-					else if(random == 2){image = explosion_sprite2;}
-					else{ image = explosion_sprite3;}
+					if (random == 1){image = sprExplosion1;}
+					else if(random == 2){image = sprExplosion2;}
+					else{ image = sprExplosion3;}
 					new Flamme(image, new createjs.Point(position.x,position.y + i*30),new createjs.Point(50,75));
 					random = Math.floor((Math.random()*3)+1);
-					if (random == 1){image = explosion_sprite;}
-					else if(random == 2){image = explosion_sprite2;}
-					else{ image = explosion_sprite3;}
+					if (random == 1){image = sprExplosion1;}
+					else if(random == 2){image = sprExplosion2;}
+					else{ image = sprExplosion3;}
 					new Flamme(image, new createjs.Point(position.x,position.y - i*30),new createjs.Point(50,75));
 				}	
 			}
 		}
 		
+		//Charge le fichier Json
 		function Charger(){
 			xhr.onreadystatechange = MonCode;
 			xhr.open("GET", "fichier.json", true);

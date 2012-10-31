@@ -48,11 +48,11 @@
     	this.intTemps = 0;
     	this.intTEMPSAPPARITION = 30;
     	// -- Initialisation de l'index de la bombe
-    	this.intIndex = tab_bonus.GetNbBonus();
+    	this.intIndex = tabLesBonus.GetNbBonus();
     	// -- Initialisation du rectangle
     	this.recRectangle = new XNARectangle(this.x, this.y, ptnTaille.x, ptnTaille.y);
     	// -- On finit en ajoutant le bonus au dessin
-    	tab_bonus.Add(this);
+    	tabLesBonus.Add(this);
     }
     
     // Boucle sur le bonus

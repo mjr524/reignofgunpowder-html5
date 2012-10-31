@@ -51,16 +51,16 @@
 	            this.DeleteAtIndex(this.tabLesFlammes[i].intIndex);
 	        }
 			
-			if (this.tabLesFlammes[i].GetRectangle().Intersects(Hero.GetRectangle()) != false)
+			if (this.tabLesFlammes[i].GetRectangle().Intersects(prsHero.GetRectangle()) != false)
 			{
 				//Le perso a �t� touch� par une flamme
-				stage.removeChild(Hero);
+				stage.removeChild(prsHero);
 			}
 			
-			if (this.tabLesFlammes[i].GetRectangle().Intersects(Arbre.GetRectangle()) != false)
+			if (this.tabLesFlammes[i].GetRectangle().Intersects(decArbre.GetRectangle()) != false)
 			{
 				//Le perso a �t� touch� par une flamme
-				stage.removeChild(Arbre);
+				stage.removeChild(decArbre);
 			}
 		}
 	}
