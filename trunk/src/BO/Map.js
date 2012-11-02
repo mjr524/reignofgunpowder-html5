@@ -71,7 +71,7 @@
    }
    
    Map.prototype.AjouterDecor = function(pintTypeDecor, pintX, pintY){
-   			
+   		
    }
 
     window.Map = Map;
