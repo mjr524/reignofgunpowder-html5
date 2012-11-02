@@ -17,7 +17,13 @@
     this.NBRCASELARGEUR = 20;
     this.NBRCASEHAUTEUR = 10;
     this.TAILLECASE = 50;
-    // -- TODO --> Faire énumération avec tous les types de décors possibles (colonnes, rocher, arbre, etc...)
+    // -- Enumération pour les décors
+    var EnuDecors = 
+	{
+	      Vide : 0, 
+	      Arbre : 1,
+	      Caisse : 1,
+	}
 
 
     function Bombe(strMap) {
@@ -39,11 +45,6 @@
 			alert("Impossible de charger la map " + strHxr + "...");
 		}
    }
-   
-   /*
-    * alert(doc.commands[0].value);
-	* alert(doc.commands[1].value);
-    */
    
    Map.prototype.MettreDecor = function(){
    		// -- Tableau stockant les espaces décorés
@@ -71,7 +72,8 @@
    }
    
    Map.prototype.AjouterDecor = function(pintTypeDecor, pintX, pintY){
-   		
+   		// -- Selon le type de décor, on dessine tel ou tel image
+   		if (pintTypeDecor = EnuDecors.Arbre){ new Decor(imgArbre, new createjs.Point(200,200), new createjs.Point(100,150), new XNARectangle(210,270,25,25), true, false);}
    }
 
     window.Map = Map;
