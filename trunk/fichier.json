@@ -1,17 +1,6 @@
  { 
-  "menu": "File", 
-  "commands": [ 
-      {
-          "value": "New", 
-          "action":"CreateDoc"
-      }, 
-      {
-          "value": "Open", 
-          "action": "OpenDoc"
-      }, 
-      {
-          "value": "Close",
-          "action": "CloseDoc"
-      }
+  "decors": [ 
+      { "type": "1","tailleX":"1","tailleY":"1"}, 
+	  { "type": "1","tailleX":"1","tailleY":"1"}, 
    ] 
 } 
