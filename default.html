@@ -133,7 +133,8 @@
             createjs.Ticker.useRAF = true;
             createjs.Ticker.setFPS(60);
             
-            //Charger();
+            //Charger(); ---> NE MARCHE PLUS, fichier JSON modifié
+            new Map("fichier.json");
 			
 			prsHero = new Perso(imgPerso, new createjs.Point( 400, 200), new createjs.Point( 32, 48));
 			decArbre = new Decor(imgArbre, new createjs.Point(200,200), new createjs.Point(100,150), new XNARectangle(210,270,25,25), true, false);
