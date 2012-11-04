@@ -14,7 +14,7 @@
     this.strXhr = new XMLHttpRequest();
     this.tabDecorMap = new Array();
     // -- Les constantes
-    this.NBRCASELARGEUR = 2;
+    this.NBRCASELARGEUR = 3;
     this.NBRCASEHAUTEUR = 1;
     this.TAILLECASE = 50;
     // -- Enumération pour les décors
@@ -76,7 +76,7 @@
    
    this.AjouterDecor = function(pintTypeDecor, pintX, pintY){
    		// -- Selon le type de décor, on dessine tel ou tel image
-   		if (pintTypeDecor = EnuDecors.Arbre){ new Decor(imgArbre, new createjs.Point(pintX,pintY), new createjs.Point(100,150), new XNARectangle(pintX,pintY,25,25), true, false);}
+   		if (pintTypeDecor == EnuDecors.Arbre){ new Decor(imgArbre, new createjs.Point(pintX,pintY - 50), new createjs.Point(100,150), new XNARectangle(pintX,pintY,25,25), true, false);}
    }
 
     window.Map = Map;

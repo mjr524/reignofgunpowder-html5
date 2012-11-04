@@ -1,6 +1,7 @@
  { 
   "decors": [ 
       { "type": "1","tailleX":"1","tailleY":"1"}, 
+	  { "type": "0","tailleX":"1","tailleY":"1"}, 
 	  { "type": "1","tailleX":"1","tailleY":"1"}, 
    ] 
 } 

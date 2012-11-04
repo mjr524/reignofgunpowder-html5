@@ -43,6 +43,11 @@
 		return this.tabLesDecors;
 	}
 	
+	//Boucle sur tous les décors
+	LesDecors.prototype.tick = function () {
+		// ---> POUR TEST L'APPARITION DE TOUS LES DECORS
+	}
+	
 	//Supprimer un décor par son index
 	LesDecors.prototype.DeleteAtIndex = function (intIndex) {
 		// -- On enlève le décor du dessin
