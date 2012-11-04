@@ -74,12 +74,6 @@
 		var tabLesBonus = LesBonus.GetInstance();
 
 		//Images
-        var imgPerso = new Image();
-        var imgBombe = new Image();
-		var imgBombeRouge = new Image();
-		var imgExplosion = new Image();
-		var imgArbre = new Image();
-		var imgPanneau = new Image();
         var prsHero = null;
         var bmbBombe = null;
 		var decArbre = null;
@@ -112,12 +106,12 @@
             fpsLabel.y = 10;
 
             //Chargement des images
-            imgPerso.src = "images/perso.png";
-            imgBombe.src = "images/bomb.png";
-			imgBombeRouge.src = "images/bomb2.png";
-			imgExplosion.src = "images/explosion.png";
-			imgArbre.src = "images/stump.png"; 
-			imgPanneau.src = "images/panneau.png";
+            imgPerso = "images/perso.png";
+            imgBombe = "images/bomb.png";
+			imgBombeRouge = "images/bomb2.png";
+			imgExplosion = "images/explosion.png";
+			imgArbre = "images/stump.png"; 
+			imgPanneau = "images/panneau.png";
 			sprExplosion1 = "images/Sprite_explosion.png";
 			sprExplosion2 = "images/Sprite_explosion2.png";
 			sprExplosion3 = "images/Sprite_explosion3.png";
@@ -135,7 +129,7 @@
             
             //Charger(); ---> NE MARCHE PLUS, fichier JSON modifié
             new Map("fichier.json");
-			
+		
 			prsHero = new Perso(imgPerso, new createjs.Point( 400, 200), new createjs.Point( 32, 48));
 			decArbre = new Decor(imgArbre, new createjs.Point(200,200), new createjs.Point(100,150), new XNARectangle(210,270,25,25), true, false);
 			bnsPanneau = new Bonus(imgPanneau, new createjs.Point(400,400),new createjs.Point(32,32),new XNARectangle(400,400,32,32));
@@ -147,6 +141,7 @@
 			tabLesPersos.tick();
             tabLesBombes.tick();
 			tabLesFlammes.tick();
+			tabLesDecors.tick();
             stage.update();
         }
 

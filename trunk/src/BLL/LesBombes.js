@@ -38,7 +38,7 @@
         this.intNbrBombes += 1;
     }
 
-    //Retourne la liste de bombes
+    //Retourne la liste des bombes
     LesBombes.prototype.Get = function () {
         return this.tabLesBombes;
     }
