@@ -65,5 +65,13 @@
 		return this.intNbrDecors;
 	}
 	
+	//Retourne s'il y a une collision ou pas
+	LesDecors.prototype.GetCollisionDecor = function (recZone) {
+		for (var i = 0; i <= this.tabLesDecors.length - 1; i++){
+			if (this.tabLesDecors[i].GetRectangle().Intersects(recZone)){return i;}
+		}
+		return -1;
+	}
+	
 	window.LesDecors = LesDecors;
 }(window));

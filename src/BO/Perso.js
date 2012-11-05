@@ -3,7 +3,7 @@
 //
 //	Author : Pizzi 
 //	Dcreat : 22/10/2012
-//	Dmodif : 22/10/2012 22:30
+//	Dmodif : 05/11/2012 23:30
 //-----------------------------------------------------------------------------
 
 /// <summary>
@@ -18,6 +18,7 @@
 	this.intPreY = 0;  // La pr�c�dente coordonn�e Y du perso
 	this.intDirection; // La intDirection du personnage : haut=1 / droite=2 / bas=3 / gauche=4
 	this.intWidth; // La largeur du perso
+	this.intDeplacement // valeur de déplacement du perso
 	this.intHeight; // La hauteur du perso
 	this.bolEnDeplacement; // Le d�placement est-il en train de se d�placer?
 	this.recRectangle; // Le rectangue du perso
@@ -50,6 +51,7 @@
 		// -- Initialisation de l'animation 
 		this.BitmapAnimation_initialize(spriteSheet);
 		this.vX = 1; // D�filement de l'animation
+		this.intDeplacement = 50;
 		this.currentFrame = 0;
 		// -- Position, intDirection et dimension du perso
 		this.intDirection = 3; // intDirection vers le bas par d�faut
@@ -72,7 +74,7 @@
 			if(this.intDirection != 4 || this.bolEnDeplacement == false )
 			{
 				this.gotoAndPlay("gauche");
-				this.intNextX = this.x - 32; // Mettre valeurs d'une case en globale
+				this.intNextX = this.x - this.intDeplacement; // Mettre valeurs d'une case en globale
 				this.intNextY = this.y;
 				this.intDirection = 4;
 				this.bolEnDeplacement = true;
@@ -83,7 +85,7 @@
 			{
 				this.gotoAndPlay("haut");
 				this.intNextX = this.x;
-				this.intNextY = this.y - 32;
+				this.intNextY = this.y - this.intDeplacement;
 				this.intDirection = 1;
 				this.bolEnDeplacement = true;
 			}
@@ -92,7 +94,7 @@
 			if(this.intDirection != 2 || this.bolEnDeplacement == false )
 			{
 				this.gotoAndPlay("droite");
-				this.intNextX = this.x + 32;
+				this.intNextX = this.x + this.intDeplacement;
 				this.intNextY = this.y;
 				this.intDirection = 2;
 				this.bolEnDeplacement = true;
@@ -103,7 +105,7 @@
 			{
 				this.gotoAndPlay("bas");
 				this.intNextX = this.x;
-				this.intNextY = this.y + 32;
+				this.intNextY = this.y + this.intDeplacement;
 				this.intDirection = 3;
 				this.bolEnDeplacement = true;
 			}

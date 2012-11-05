@@ -3,7 +3,7 @@
 //
 //	Author : Jo 
 //	Dcreat : *
-//	Dmodif : 25/10/2012 21:30
+//	Dmodif : 05/11/2012 23:30
 //-----------------------------------------------------------------------------
 
 (function (window) {
@@ -82,6 +82,14 @@
 	//Retourne le nombre de persos
 	LesPersos.prototype.getNbPersos = function () {
 		return this.intNbrPersos;
+	}
+	
+	//Retourne s'il y a une collision ou pas
+	LesDecors.prototype.GetCollisionDecor = function (recZone) {
+		for (var i = 0; i <= this.tabLesPersos.length - 1; i++){
+			if (this.tabLesPersos[i].GetRectangle().Intersects(recZone)){return i;}
+		}
+		return -1;
 	}
 	
 	window.LesPersos = LesPersos;
