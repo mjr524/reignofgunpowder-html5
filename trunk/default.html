@@ -162,6 +162,7 @@
 
         function handleKeyUp(e) {}
 		
+		// --> TODO : code à déplacer dans les flammes.js
 		//Crée une explosion à une position et à une puissance donnée
 		function CreerExplosion(position, puissance){
 			var image = null;
@@ -204,21 +205,7 @@
 				}	
 			}
 		}
-		
-		//Charge le fichier Json
-		function Charger(){
-			xhr.onreadystatechange = MonCode;
-			xhr.open("GET", "fichier.json", true);
-			xhr.send(null);
-		}
-		
-		function MonCode(){
-			if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
-					var doc = eval('(' + xhr.responseText + ')');
-					alert(doc.commands[0].value);
-					alert(doc.commands[1].value);
-			}
-		}
+
 
 	</script>
 </head>
