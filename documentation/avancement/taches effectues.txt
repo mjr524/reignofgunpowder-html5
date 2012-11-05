@@ -1,3 +1,8 @@
+05/11/2012 - Pizzi
+	Mise en place des collisions (en cours). 
+
+__________________________________
+
 04/11/2012 - Pizzi
 	Chargement de la Map quasi-terminé. En attente de plus de graphismes pour meilleurs tests.
 
