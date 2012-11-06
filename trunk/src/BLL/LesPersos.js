@@ -85,7 +85,7 @@
 	}
 	
 	//Retourne s'il y a une collision ou pas
-	LesDecors.prototype.GetCollisionDecor = function (recZone) {
+	LesPersos.prototype.GetCollisionDecor = function (recZone) {
 		for (var i = 0; i <= this.tabLesPersos.length - 1; i++){
 			if (this.tabLesPersos[i].GetRectangle().Intersects(recZone)){return i;}
 		}
