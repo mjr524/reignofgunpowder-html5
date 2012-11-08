@@ -12,8 +12,6 @@
 (function (window) {
 
     //Attributs de la classe Flamme
-	this.intTEMPS_FLAMME; // Constante sur les temps des flammes
-    this.intTemps; // Temps écoulé depuis l'apparition des flammes
 	this.intIndex; // Index de la flamme dans le tableau
 	this.intWidth; // Largeur de l'image
 	this.intHeight; // Hauteur de l'image
@@ -38,25 +36,22 @@
 		// largeur, hauteur & point central de chacun des sprites
 		frames: {width: ptnTaille.x, height: ptnTaille.y, regX: 0, regY: 0}, 
 		animations: {    
-			explose: [0, 10, "explose",8],
+			explose: [0, 6, "explose",8],
 		}
 		});
 		// -- Initialisation de l'animation
 		this.BitmapAnimation_initialize(spriteSheet);
 		this.vX = 1; // Défilement de l'animation
-		this.currentFrame = 0;
+		this.d = 0;
 		// -- Position, index et dimension du perso
 		this.x = ptnPosition.x;
 		this.y = ptnPosition.y;
 		this.intWidth = ptnTaille.x;
 		this.intHeight = ptnTaille.y;
-		// -- Initialisation des timers
-		this.intTemps = 0;
-		this.intTEMPS_FLAMME = 80;
 		// -- Initialisation de l'index de la bombe
 		this.intIndex = tabLesFlammes.GetNbFlammes();
 		// -- Initialisation du rectangle
-		this.recRectangle = new XNARectangle(this.x, this.y, this.intWidth, this.intHeight);
+		this.recRectangle = new XNARectangle(this.x, this.y + 25, this.intWidth, this.intHeight - 25);
 		// -- On finit en ajoutant la flamme au dessin
 		tabLesFlammes.Add(this);
 		// -- On joue l'animation
