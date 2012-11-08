@@ -3,7 +3,7 @@
 //
 //	Author : Pizzi
 //	Dcreat : 28/10/2012 00:30
-//	Dmodif : 05/11/2012 23:30
+//	Dmodif : 08/11/2012 20:45
 //-----------------------------------------------------------------------------
 
 (function (window) {
@@ -68,9 +68,9 @@
 	//Retourne s'il y a une collision ou pas
 	LesDecors.prototype.GetCollisionDecor = function (recZone) {
 		for (var i = 0; i <= this.tabLesDecors.length - 1; i++){
-			if (this.tabLesDecors[i].GetRectangle().Intersects(recZone)){return i;}
+			if (this.tabLesDecors[i].GetRectangle().Intersects(recZone))
+			{this.DeleteAtIndex(i);}
 		}
-		return -1;
 	}
 	
 	window.LesDecors = LesDecors;

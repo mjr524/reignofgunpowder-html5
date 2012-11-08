@@ -3,7 +3,7 @@
 //
 //	Author : Pizzi
 //	Dcreat : 27/10/2012 19:30
-//	Dmodif : 27/10/2012 23:30
+//	Dmodif : 08/11/2012 20:45
 //-----------------------------------------------------------------------------
 
 (function (window) {
@@ -47,21 +47,17 @@
 	LesFlammes.prototype.tick = function () {
 		for (var i = 0; i <= this.tabLesFlammes.length - 1; i++) {
 			this.tabLesFlammes[i].intTemps += 1;
-	        if (this.tabLesFlammes[i].intTemps == this.tabLesFlammes[i].intTEMPS_FLAMME) {
-	            this.DeleteAtIndex(this.tabLesFlammes[i].intIndex);
-	        }
-			
-			if (this.tabLesFlammes[i].GetRectangle().Intersects(prsHero.GetRectangle()) != false)
-			{
-				//Le perso a �t� touch� par une flamme
-				stage.removeChild(prsHero);
+			if (this.tabLesFlammes[i].currentFrame == 6) {
+				this.DeleteAtIndex(this.tabLesFlammes[i].intIndex);
 			}
-			
-			if (this.tabLesFlammes[i].GetRectangle().Intersects(decArbre.GetRectangle()) != false)
-			{
-				//Le perso a �t� touch� par une flamme
-				stage.removeChild(decArbre);
+			if (this.tabLesFlammes[i].currentFrame <= 3) {
+				if (this.tabLesFlammes[i].GetRectangle().Intersects(prsHero.GetRectangle()) != false)
+				{
+					//Le perso a �t� touch� par une flamme
+					stage.removeChild(prsHero);
+				}
 			}
+			tabLesDecors.GetCollisionDecor(this.tabLesFlammes[i].GetRectangle());
 		}
 	}
 	
