@@ -3,7 +3,7 @@
 //
 //	Author : Pizzi 
 //	Dcreat : 23/10/2012
-//	Dmodif : 27/10/2012 23:30
+//	Dmodif : 10/11/2012 12:05
 //-----------------------------------------------------------------------------
 
 /// <summary>
@@ -51,7 +51,7 @@
 		// -- Initialisation de l'index de la bombe
 		this.intIndex = tabLesFlammes.GetNbFlammes();
 		// -- Initialisation du rectangle
-		this.recRectangle = new XNARectangle(this.x, this.y + 25, this.intWidth, this.intHeight - 25);
+		this.recRectangle = new XNARectangle(this.x, this.y - 25, this.intWidth, this.intHeight - 25);
 		// -- On finit en ajoutant la flamme au dessin
 		tabLesFlammes.Add(this);
 		// -- On joue l'animation
