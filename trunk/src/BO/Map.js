@@ -76,7 +76,7 @@
    
    this.AjouterDecor = function(pintTypeDecor, pintX, pintY){
    		// -- Selon le type de décor, on dessine tel ou tel image
-   		if (pintTypeDecor == EnuDecors.Arbre){ new Decor(imgArbre, new createjs.Point(pintX,pintY), new createjs.Point(100,150), new XNARectangle(pintX,pintY,25,25), true, false);}
+   		if (pintTypeDecor == EnuDecors.Arbre){ new Decor(imgArbre, new createjs.Point(pintX,pintY), new createjs.Point(100,150), new XNARectangle(pintX,pintY + 100,50,50), true, false);}
    }
 
     window.Map = Map;
