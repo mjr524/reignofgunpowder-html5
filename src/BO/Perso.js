@@ -3,7 +3,7 @@
 //
 //	Author : Pizzi 
 //	Dcreat : 22/10/2012
-//	Dmodif : 05/11/2012 23:30
+//	Dmodif : 08/11/2012 23:30
 //-----------------------------------------------------------------------------
 
 /// <summary>
@@ -134,7 +134,7 @@
 	
 	// Actualise et retourne le rectange du perso
 	Perso.prototype.GetRectangle = function(){
-		this.recRectangle = new XNARectangle(this.intNextX, this.intNextY + this.intWidth, 1, 1); 
+		this.recRectangle = new XNARectangle(this.x, this.y + this.intWidth, 1, 1); 
 		return this.recRectangle;
 	}
 	
