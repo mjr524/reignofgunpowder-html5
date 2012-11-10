@@ -73,6 +73,15 @@
     LesBombes.prototype.GetNbBombes = function () {
         return this.intNbrBombes;
     }
+    
+    //Retoune s'il y a une collision (deplacement)
+    LesBombes.prototype.GetCollsionBombe = function (recZone) {
+    	for (var i = 0; i <= this.tabLesBombes.length - 1; i++){
+    		if (this.tabLesBombes[i].GetRectangle().Intersects(recZone))
+    		{return true;}
+    	}
+    	return false;
+    }
 
 	window.LesBombes = LesBombes;
 }(window));
