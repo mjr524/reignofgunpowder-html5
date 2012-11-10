@@ -84,12 +84,21 @@
 		return this.intNbrPersos;
 	}
 	
+	//Retourne s'il y a une collision (explosion)
+	LesPersos.prototype.GetExplosionDecor = function (recZone) {
+		for (var i = 0; i <= this.tabLesPersos.length - 1; i++){
+			if (this.tabLesPersos[i].GetRectangle().Intersects(recZone))
+			{this.DeleteAtIndex(i);}
+		}
+	}
+	
 	//Retourne s'il y a une collision ou pas
 	LesPersos.prototype.GetCollisionDecor = function (recZone) {
 		for (var i = 0; i <= this.tabLesPersos.length - 1; i++){
-			if (this.tabLesPersos[i].GetRectangle().Intersects(recZone)){return i;}
+			if (this.tabLesPersos[i].GetRectangle().Intersects(recZone))
+			{return true;}
 		}
-		return -1;
+		return false;
 	}
 	
 	window.LesPersos = LesPersos;

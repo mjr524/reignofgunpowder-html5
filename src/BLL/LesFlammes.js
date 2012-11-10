@@ -57,7 +57,7 @@
 					stage.removeChild(prsHero);
 				}
 			}
-			tabLesDecors.GetCollisionDecor(this.tabLesFlammes[i].GetRectangle());
+			tabLesDecors.GetExplosionDecor(this.tabLesFlammes[i].GetRectangle());
 		}
 	}
 	

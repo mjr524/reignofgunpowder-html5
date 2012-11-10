@@ -65,12 +65,21 @@
 		return this.intNbrDecors;
 	}
 	
-	//Retourne s'il y a une collision ou pas
-	LesDecors.prototype.GetCollisionDecor = function (recZone) {
+	//Retourne s'il y a une collision (explosion)
+	LesDecors.prototype.GetExplosionDecor = function (recZone) {
 		for (var i = 0; i <= this.tabLesDecors.length - 1; i++){
 			if (this.tabLesDecors[i].GetRectangle().Intersects(recZone))
 			{this.DeleteAtIndex(i);}
 		}
+	}
+	
+	//Retourne s'il y a une collision (deplacement)
+	LesDecors.prototype.GetCollisionDecor = function (recZone) {
+		for (var i = 0; i <= this.tabLesDecors.length - 1; i++){
+			if (this.tabLesDecors[i].GetRectangle().Intersects(recZone))
+			{return true;}
+		}
+		return false;
 	}
 	
 	window.LesDecors = LesDecors;
