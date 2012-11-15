@@ -62,6 +62,7 @@
         var stage;
         var fpsLabel;
         var imgMap;
+        var deplacement = 0;
 		
 		//Les constantes
 		
@@ -147,20 +148,42 @@
 
 		//Evènement sur les touches du clavier
         function handleKeyDown(e) {
+
             //cross browser issues exist
             if (!e) { var e = window.event; }
             //Annule l'évènement en cours
             e.preventDefault();
             switch (e.keyCode) {
-                case KEYCODE_LEFT: prsHero.Deplacer(4); break;
-                case KEYCODE_RIGHT: prsHero.Deplacer(2); break;
-                case KEYCODE_UP: prsHero.Deplacer(1); break;
-                case KEYCODE_DOWN: prsHero.Deplacer(3); break;
+                case KEYCODE_LEFT:
+                	if (prsHero.intDirection != 4 || prsHero.bolEnDeplacement == false){ deplacement ++;} 
+                	prsHero.Deplacer(4); break;
+                case KEYCODE_RIGHT:
+                	if (prsHero.intDirection != 2 || prsHero.bolEnDeplacement == false){ deplacement ++;} 
+                	prsHero.Deplacer(2); break;
+                case KEYCODE_UP: 
+                	if (prsHero.intDirection != 1 || prsHero.bolEnDeplacement == false){ deplacement ++;} 
+                	prsHero.Deplacer(1); break;
+                case KEYCODE_DOWN: 
+                	if (prsHero.intDirection != 3 || prsHero.bolEnDeplacement == false){ deplacement ++;} 
+                	prsHero.Deplacer(3); break;
                 case KEYCODE_SPACE: prsHero.PoserBombe(); break;
             }
         }
 
-        function handleKeyUp(e) {}
+        function handleKeyUp(e) {
+        	if (!e) { var e= window.event; }
+        	
+        	e.preventDefault();
+        	switch (e.keyCode){
+        		case KEYCODE_DOWN: 
+        		case KEYCODE_LEFT: 
+        		case KEYCODE_RIGHT: 
+        		case KEYCODE_UP:
+        			deplacement --; break;
+        	}
+			// Si plus aucune touche de déplacement est appuyée, alors on arrête de se déplacer
+        	if (deplacement == 0){prsHero.bolEnDeplacement = false;}
+        }
 		
 		// --> TODO : code à déplacer dans les flammes.js
 		//Crée une explosion à une position et à une puissance donnée
