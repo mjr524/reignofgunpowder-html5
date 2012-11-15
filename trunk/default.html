@@ -184,50 +184,6 @@
 			// Si plus aucune touche de déplacement est appuyée, alors on arrête de se déplacer
         	if (deplacement == 0){prsHero.bolEnDeplacement = false;}
         }
-		
-		// --> TODO : code à déplacer dans les flammes.js
-		//Crée une explosion à une position et à une puissance donnée
-		function CreerExplosion(position, puissance){
-			var image = null;
-			var random = Math.floor((Math.random()*3)+1);
-			if (random == 1){image = sprExplosion1;}
-			else if(random == 2){image = sprExplosion2;}
-			else{ image = sprExplosion3;}
-			// ---> TODO : Faire la même méthode random, légèreté du code
-			//------------------------------------------------------------------------------
-			for (var i = puissance; i >= 0; i--) {
-				if(i==0)
-				{
-					random = Math.floor((Math.random()*3)+1);
-					if (random == 1){image = sprExplosion1;}
-					else if(random == 2){image = sprExplosion2;}
-					else{ image = sprExplosion3;}
-					new Flamme(image, new createjs.Point(position.x,position.y),new createjs.Point(50,75));
-				}
-				else{
-					random = Math.floor((Math.random()*3)+1);
-					if (random == 1){image = sprExplosion1;}
-					else if(random == 2){image = sprExplosion2;}
-					else{ image = sprExplosion3;}
-					new Flamme(image, new createjs.Point(position.x + i*30,position.y),new createjs.Point(50,75));
-					random = Math.floor((Math.random()*3)+1);
-					if (random == 1){image = sprExplosion1;}
-					else if(random == 2){image = sprExplosion2;}
-					else{ image = sprExplosion3;}
-					new Flamme(image, new createjs.Point(position.x - i*30,position.y),new createjs.Point(50,75));
-					random = Math.floor((Math.random()*3)+1);
-					if (random == 1){image = sprExplosion1;}
-					else if(random == 2){image = sprExplosion2;}
-					else{ image = sprExplosion3;}
-					new Flamme(image, new createjs.Point(position.x,position.y + i*30),new createjs.Point(50,75));
-					random = Math.floor((Math.random()*3)+1);
-					if (random == 1){image = sprExplosion1;}
-					else if(random == 2){image = sprExplosion2;}
-					else{ image = sprExplosion3;}
-					new Flamme(image, new createjs.Point(position.x,position.y - i*30),new createjs.Point(50,75));
-				}	
-			}
-		}
 
 
 	</script>

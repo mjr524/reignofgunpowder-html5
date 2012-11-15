@@ -3,7 +3,7 @@
 //
 //	Author : Jo 
 //	Dcreat : *
-//	Dmodif : 25/10/2012 21:30
+//	Dmodif : 16/11/2012 00:30
 //-----------------------------------------------------------------------------
 
 (function (window) {
@@ -57,7 +57,7 @@
     //Supprime une bombe par son index
     LesBombes.prototype.DeleteAtIndex = function (intIndex) {
     	// -- On crée l'explosion
-        CreerExplosion(new createjs.Point(this.tabLesBombes[intIndex].x, this.tabLesBombes[intIndex].y - 25), 6);
+        this.CreerExplosion(new createjs.Point(this.tabLesBombes[intIndex].x, this.tabLesBombes[intIndex].y - 25), 6);
         // -- On enlève la bombe du dessin
         stage.removeChild(this.tabLesBombes[intIndex]);
         // -- On supprimr la bombe du tableau
@@ -68,6 +68,38 @@
             this.tabLesBombes[i].intIndex--;
         }
     }
+    
+    //Crée une explosion à une position et à une puissance donnée
+	LesBombes.prototype.CreerExplosion = function (position, puissance){
+		var image = null;
+		for (var i = puissance; i >= 0; i--) {
+			if(i==0)
+			{
+				image = this.ChoisirFlamme(3,1);
+				new Flamme(image, new createjs.Point(position.x,position.y),new createjs.Point(50,75));
+			}
+			else{
+				image = this.ChoisirFlamme(3,1);
+				new Flamme(image, new createjs.Point(position.x + i*30,position.y),new createjs.Point(50,75));
+				image = this.ChoisirFlamme(3,1);
+				new Flamme(image, new createjs.Point(position.x - i*30,position.y),new createjs.Point(50,75));
+				image = this.ChoisirFlamme(3,1);
+				new Flamme(image, new createjs.Point(position.x,position.y + i*30),new createjs.Point(50,75));
+				image = this.ChoisirFlamme(3,1);
+				new Flamme(image, new createjs.Point(position.x,position.y - i*30),new createjs.Point(50,75));
+			}	
+		}
+	}
+	
+	//Permet de choisir la flamme via un random
+	LesBombes.prototype.ChoisirFlamme = function (intMax,intMin){
+		var image = null;
+		var random = Math.floor((Math.random()*intMax)+intMin);
+		if (random == 1){image = sprExplosion1;}
+		else if(random == 2){image = sprExplosion2;}
+		else{ image = sprExplosion3;}
+		return image;
+	}
 
     //Retourne le nombre de bombes
     LesBombes.prototype.GetNbBombes = function () {
