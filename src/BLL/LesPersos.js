@@ -48,24 +48,48 @@
 	//Boucle sur tous les persos
 	LesPersos.prototype.tick = function () {
 		for (var i = 0; i <= this.tabLesPersos.length - 1; i++) {
-			if (this.tabLesPersos[i].intNextX == this.tabLesPersos[i].x && this.tabLesPersos[i].intNextY == this.tabLesPersos[i].y){
-				this.tabLesPersos[i].bolEnDeplacement = false;
-				this.tabLesPersos[i].stop();
-			}
-			else{
-				if (this.tabLesPersos[i].intDirection == 2){
-					this.tabLesPersos[i].x += this.tabLesPersos[i].vX;
-				}
-				else if(this.tabLesPersos[i].intDirection == 4){
-					this.tabLesPersos[i].x -= this.tabLesPersos[i].vX;
-				}
-				if (this.tabLesPersos[i].intDirection == 1){
-					this.tabLesPersos[i].y -= this.tabLesPersos[i].vX;
-				}
-				else if(this.tabLesPersos[i].intDirection == 3){
-					this.tabLesPersos[i].y += this.tabLesPersos[i].vX;
-				}
-			}
+			if (this.tabLesPersos[i].bolEnDeplacement == true)
+			{
+				if (this.tabLesPersos[i].intDirection == 1) {
+					this.tabLesPersos[i].y -= this.tabLesPersos[i].intDeplacement;
+					if (this.tabLesPersos[i].currentAnimation.indexOf("haut") == -1 || this.tabLesPersos[i].currentAnimation.indexOf("haut") == 6) {
+						this.tabLesPersos[i].gotoAndPlay("haut");
+					}				
+	            }
+	            if (this.tabLesPersos[i].intDirection == 2) {
+	            	this.tabLesPersos[i].x += this.tabLesPersos[i].intDeplacement;
+	            	if( this.tabLesPersos[i].currentAnimation.indexOf("droite") == -1 || this.tabLesPersos[i].currentAnimation.indexOf("droite") == 6) {
+						this.tabLesPersos[i].gotoAndPlay("droite");
+					}
+	            }
+	            if (this.tabLesPersos[i].intDirection == 3) {
+	            	this.tabLesPersos[i].y += this.tabLesPersos[i].intDeplacement;
+	            	if (this.tabLesPersos[i].currentAnimation.indexOf("bas") == -1 || this.tabLesPersos[i].currentAnimation.indexOf("bas") == 6) {
+						this.tabLesPersos[i].gotoAndPlay("bas");
+					}
+	            }
+	            if (this.tabLesPersos[i].intDirection == 4) {
+	            	this.tabLesPersos[i].x -= this.tabLesPersos[i].intDeplacement;
+	            	if (this.tabLesPersos[i].currentAnimation.indexOf("gauche") == -1 || this.tabLesPersos[i].currentAnimation.indexOf("gauche") == 6) {
+						this.tabLesPersos[i].gotoAndPlay("gauche");
+					}
+	            }
+           }
+           else
+           {
+           		if (this.tabLesPersos[i].intDirection == 1) {
+           			this.tabLesPersos[i].gotoAndPlay("hidle_haut");
+           		}
+           		if (this.tabLesPersos[i].intDirection == 2) {
+           			this.tabLesPersos[i].gotoAndPlay("hidle_droite");
+           		}
+           		if (this.tabLesPersos[i].intDirection == 3) {
+           			this.tabLesPersos[i].gotoAndPlay("hidle_bas");
+           		}
+           		if (this.tabLesPersos[i].intDirection == 4) {
+           			this.tabLesPersos[i].gotoAndPlay("hidle_gauche");
+           		}
+           }
 		}
 	}
 
@@ -95,10 +119,9 @@
 	//Retourne s'il y a une collision ou pas
 	LesPersos.prototype.GetCollisionDecor = function (recZone) {
 		for (var i = 0; i <= this.tabLesPersos.length - 1; i++){
-			if (this.tabLesPersos[i].GetRectangle().Intersects(recZone))
-			{return true;}
+			if (this.tabLesPersos[i].GetRectangle().Intersects(recZone)){return i;}
 		}
-		return false;
+		return -1;
 	}
 	
 	window.LesPersos = LesPersos;

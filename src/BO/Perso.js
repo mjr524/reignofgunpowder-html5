@@ -46,12 +46,16 @@
 			gauche: [4, 7, "gauche",8],
 			droite: [8, 11, "droite",8],
 			haut: [12, 15, "haut",8],
+			hidle_bas: [0, 0, "hidle_bas",8],
+			hidle_droite: [8, 8, "hidle_droite",8],
+			hidle_haut: [12, 12, "hidle_haut",8],
+			hidle_gauche: [4, 4, "hidle_gauche",8],
 		}
 		});
 		// -- Initialisation de l'animation 
 		this.BitmapAnimation_initialize(spriteSheet);
 		this.vX = 1; // D�filement de l'animation
-		this.intDeplacement = 50;
+		this.intDeplacement = 5;
 		this.currentFrame = 0;
 		// -- Position, intDirection et dimension du perso
 		this.intDirection = 3; // intDirection vers le bas par d�faut
@@ -71,44 +75,20 @@
 	// Deplacement du personnage
 	Perso.prototype.Deplacer = function(TypeDeplacement){
 		if (TypeDeplacement == 4){
-			if(this.intDirection != 4 || this.bolEnDeplacement == false )
-			{
-				this.gotoAndPlay("gauche");
-				this.intNextX = this.x - this.intDeplacement; // Mettre valeurs d'une case en globale
-				this.intNextY = this.y;
-				this.intDirection = 4;
-				this.bolEnDeplacement = true;
-			}
+			this.intDirection = 4;
+			this.bolEnDeplacement = true;
 		}
 		if (TypeDeplacement == 1){
-			if(this.intDirection != 1 || this.bolEnDeplacement == false )
-			{
-				this.gotoAndPlay("haut");
-				this.intNextX = this.x;
-				this.intNextY = this.y - this.intDeplacement;
-				this.intDirection = 1;
-				this.bolEnDeplacement = true;
-			}
+			this.intDirection = 1;
+			this.bolEnDeplacement = true;
 		}
 		if (TypeDeplacement == 2){
-			if(this.intDirection != 2 || this.bolEnDeplacement == false )
-			{
-				this.gotoAndPlay("droite");
-				this.intNextX = this.x + this.intDeplacement;
-				this.intNextY = this.y;
-				this.intDirection = 2;
-				this.bolEnDeplacement = true;
-			}
+			this.intDirection = 2;
+			this.bolEnDeplacement = true;
 		}
 		if (TypeDeplacement == 3){
-			if(this.intDirection != 3 || this.bolEnDeplacement == false )
-			{
-				this.gotoAndPlay("bas");
-				this.intNextX = this.x;
-				this.intNextY = this.y + this.intDeplacement;
-				this.intDirection = 3;
-				this.bolEnDeplacement = true;
-			}
+			this.intDirection = 3;
+			this.bolEnDeplacement = true;
 		}
 	}
 
