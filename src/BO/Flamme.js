@@ -51,7 +51,7 @@
 		// -- Initialisation de l'index de la bombe
 		this.intIndex = tabLesFlammes.GetNbFlammes();
 		// -- Initialisation du rectangle
-		this.recRectangle = new XNARectangle(this.x, this.y - 25, this.intWidth, this.intHeight - 25);
+		this.recRectangle = new XNARectangle(this.x, this.y + 25, this.intWidth, this.intHeight - 25);
 		// -- On finit en ajoutant la flamme au dessin
 		tabLesFlammes.Add(this);
 		// -- On joue l'animation

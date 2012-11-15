@@ -94,22 +94,24 @@
 
 	// Poser une bombe ===> Rien � faire ici
 	Perso.prototype.PoserBombe = function(){
+		var intEcart = 0;
 		if (!this.bolEnDeplacement){
-			if (this.intDirection == 2){
-			    new Bombe(sprBombe,new createjs.Point(this.x + 50, this.y + (this.intHeight - 50)), new createjs.Point(50,50), 100);
-			}
-			else if(this.intDirection == 4){
-			    new Bombe(sprBombe, new createjs.Point(this.x - 50, this.y + (this.intHeight - 50)), new createjs.Point(50,50), 100);
-			}
-			else if(this.intDirection == 3){
-			    new Bombe(sprBombe,new createjs.Point(this.x, this.y + 50 + (this.intHeight - 50)), new createjs.Point(50,50), 100);
-			}
-			else if(this.intDirection == 1){
-			    new Bombe(sprBombe, new createjs.Point(this.x, this.y - 50 + (this.intHeight - 50)), new createjs.Point(50,50), 100);
-			}
-			
-			stage.addChild(this);
+			intEcart = TAILLECASE;
 		}
+		if (this.intDirection == 2){
+		    new Bombe(sprBombe,new createjs.Point(this.x + TAILLECASE, this.y + (this.intHeight - 50)), new createjs.Point(50,50), 70);
+		}
+		else if(this.intDirection == 4){
+		    new Bombe(sprBombe, new createjs.Point(this.x - TAILLECASE, this.y + (this.intHeight - 50)), new createjs.Point(50,50), 70);
+		}
+		else if(this.intDirection == 3){
+		    new Bombe(sprBombe,new createjs.Point(this.x, this.y + TAILLECASE + (this.intHeight - 50)), new createjs.Point(50,50), 70);
+		}
+		else if(this.intDirection == 1){
+		    new Bombe(sprBombe, new createjs.Point(this.x, this.y - TAILLECASE + (this.intHeight - 50)), new createjs.Point(50,50), 70);
+		}
+		
+		stage.addChild(this);
 	}
 	
 	// Actualise et retourne le rectange du perso
