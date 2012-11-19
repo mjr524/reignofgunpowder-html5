@@ -26,8 +26,15 @@
 	}
 
 
-    function Map(strMap) {
+    function Map(strBackground, strMap) {
+    	AfficherBackground(strBackground);
         ChargerMap(strMap);
+    }
+    
+    this.AfficherBackground = function(strBackground){
+    	var imgBackground = new createjs.Bitmap(strBackground);
+    	//On ajoute le background à la map
+    	stage.addChild(imgMap);
     }
 
 	this.ChargerMap = function(strMap){
@@ -57,9 +64,6 @@
    			// -- Puis sur la largeur (x)
    			for (var j = 0; j <= NBRCASELARGEUR; j++)
    			{
-   				/*alert(pTabDecor.decors[intCompteur].type);
-   				alert(pTabDecor.decors[intCompteur].tailleX);
-   				alert(pTabDecor.decors[intCompteur].tailleY);*/
    				if (tabEspacesOccupés[j] <= i | i == 0)
    				{
    					AjouterDecor(pTabDecor.decors[intCompteur].type, j*TAILLECASE, i*TAILLECASE);
